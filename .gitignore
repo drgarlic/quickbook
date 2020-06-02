@@ -1,0 +1,35 @@
+# ---
+# Mac OS
+# ---
+
+.DS_Store
+* 2*
+
+# ---
+# Node
+# ---
+
+node_modules
+
+# ---
+# Now
+# ---
+
+.now
+
+# ---
+# Production
+# ---
+
+public/tailwind.css
+public/build
+public/favicons
+*.webp
+
+# ---
+# Yarn
+# ---
+
+yarn-error.log
+
+.vercel
