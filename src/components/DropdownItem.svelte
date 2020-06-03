@@ -10,6 +10,7 @@
 ">
     <button
         on:click={onClick}
+        aria-label={text}
         class="
         flex-1
         group
@@ -43,6 +44,7 @@
     {#if onClickBis}
         <button
             on:click={onClickBis}
+            aria-label={text + '-additional-button'}
             class="
             flex-none
             p-2

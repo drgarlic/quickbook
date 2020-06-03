@@ -20,13 +20,13 @@ const regexesCacheOnly = [
 
 // /!\ Warning /!\
 // Variables auto updated by Gulp, do not change them !
-const cacheName = 'cache-svind-kaygusdv';
+const cacheName = 'cache-quickbook-kaz2x10n';
 const filesToPreCache = [
     '/',
     '/index.html',
     '/tailwind.css',
-    '/build/index-d5d9fdd2.js',
-    '/build/main-235ecf7b.js',
+    '/build/index-89aa2ab8.js',
+    '/build/main-8e8c906f.js',
     '/build/main.js'
 ];
 

@@ -29,7 +29,7 @@
         sm:space-x-3
     ">
         <Button
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfK8Nyl5YqrFe-fpioeEX6Hq_GPasoV7yUmlsimAjzI4l8tRA/viewform"
+            href="https://github.com/gawlk/quickbook"
             blank
             secondary
             customPadding="p-2"

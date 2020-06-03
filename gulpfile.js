@@ -9,6 +9,7 @@ const imagemin = require('gulp-imagemin');
 const inject = require('gulp-inject');
 const packageJson = require('./package.json');
 const postcss = require('gulp-postcss');
+const rename = require('gulp-rename');
 const replace = require('gulp-string-replace');
 const tailwindcss = require('tailwindcss');
 const webp = require('gulp-webp');
@@ -47,24 +48,31 @@ exports.generateFavicons = generateFavicons;
 
 const clean = () => {
     return del([
+        'public/*.css',
         'public/assets/**/*.webp',
         'public/build/**',
     ]);
 };
 exports.clean = clean;
 
-const tailwind = () => {
+const _tailwind = (name = 'tailwind') => {
     return gulp.src('node_modules/tailwindcss/tailwind.css')
         .pipe(postcss([
-            tailwindcss(),
+            tailwindcss(`./${name}.config.js`),
             autoprefixer()
         ]))
+        .pipe(rename(`${name}.css`))
         .pipe(gulp.dest('public'));
 };
+
+const tailwind = () => _tailwind();
 exports.tailwind = tailwind;
 
+const tailwindFull = () => _tailwind('tailwind-full');
+exports.tailwindFull = tailwindFull;
+
 const optimizeCss = () => {
-    return gulp.src('public/tailwind.css')
+    return gulp.src('public/*.css')
         .pipe(postcss([
             cssnano()
         ]))
@@ -109,6 +117,7 @@ exports.dev = dev;
 
 const prod = gulp.series(
     tailwind,
+    tailwindFull,
     optimizeCss,
     generateWebps,
     generateFavicons,
