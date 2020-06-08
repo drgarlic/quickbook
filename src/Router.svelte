@@ -1,12 +1,10 @@
 <script>
     import Router from 'svelte-spa-router';
-    import { ChunkGenerator } from 'svelte-spa-chunk';
-    import ChunkComponent from 'svelte-spa-chunk/Chunk.svelte';
 
-    const Chunk = ChunkGenerator(ChunkComponent);
+    import Home from './pages/Home';
 
     const routes = {
-        '/:data?': Chunk(() => import('./pages/Home'))
+        '/:data?': Home,
     };
 </script>
 

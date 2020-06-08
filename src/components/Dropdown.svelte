@@ -4,7 +4,7 @@
 
     import Button from './Button';
 
-    export let toggle = false;
+    export let toggle;
 
     let button;
     let dropdown;
@@ -25,7 +25,7 @@
                 ! (between(bb.left, x, bb.right) && between(bb.top, y, bb.bottom))
                 && ! (between(bd.left, x, bd.right) && between(bd.top, y, bd.bottom))
             ) {
-                toggle = false;
+                dispatch('update', { value: false });
             }
         }
     }
@@ -40,9 +40,10 @@
 ">
     <div bind:this={button}>
         <Button
-            on:click={() => { toggle = ! toggle }}
+            on:click={() => { dispatch('update', { value: ! toggle }); }}
             active={toggle}
-            secondary
+            tertiary
+            animate
             customPadding="p-2"
         >
             <slot name="button">

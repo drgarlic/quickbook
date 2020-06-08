@@ -15,7 +15,10 @@
     export let secondary = false;
     export let tertiary = false;
     export let danger = false;
-    export let light = false;
+    $: primary = ! secondary && ! tertiary && ! danger;
+
+    export let animate;
+    $: _animate = animate !== undefined ? animate : (primary || secondary);
 
     export let customPadding = '';
 
@@ -41,11 +44,13 @@
 
     let colors;
     $: {
-        colors = `
-            text-white
-            bg-gray-600
-            hover:bg-gray-500
-        `;
+        if (primary) {
+            colors = `
+                text-white
+                bg-gray-600
+                hover:bg-gray-500
+            `;
+        }
         if (secondary) {
             colors = `
                 text-gray-400
@@ -63,11 +68,10 @@
             // }
         } else if (tertiary) {
             colors = `
-                text-gray-500
-                hover:text-gray-400
+                text-gray-400
+                hover:text-gray-500
+                ${active ? 'text-gray-500' : ''}
             `;
-                // dark:text-gray-500
-                // dark:hover:text-gray-400
         } else if (danger) {
             colors = `
                 text-red-700
@@ -80,6 +84,9 @@
         }
     };
 
+    $: animation = 'hover:-translate-y-px ' + (big ? 'hover:shadow' : 'hover:shadow-sm');
+
+    $: activated = '-translate-y-px ' + (big ? 'shadow' : 'shadow-sm');
 
     $: classes = `
         ${size}
@@ -97,8 +104,8 @@
         duration-150
         ease-in-out
         focus:outline-none
-        ${! tertiary ? 'group-hover:shadow-xs' : ''}
-        ${! tertiary && active ? 'shadow-xs' : ''}
+        ${_animate ? 'group-hover:shadow-xs' : ''}
+        ${active ? 'shadow-xs' : ''}
     `;
 </script>
 
@@ -107,10 +114,9 @@
     rounded-md
     transform
     duration-150
+    {_animate ? animation : ''}
+    {active ? activated : ''}
     {_class}
-    {! tertiary ? 'hover:-translate-y-px' : ''}
-    {! tertiary ? (big ? 'hover:shadow' : 'hover:shadow-sm') : ''}
-    {! tertiary ? (active ? ('-translate-y-px ' + (big ? 'shadow' : 'shadow-sm')) : '') : ''}
 ">
     {#if href}
         <a

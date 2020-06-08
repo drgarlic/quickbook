@@ -14,7 +14,7 @@ export default {
     input: packageJson.main,
     output: {
         sourcemap: true,
-        format: 'es',
+        format: 'iife',
         name: 'app',
         dir: 'public/build/'
     },

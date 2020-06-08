@@ -18,6 +18,16 @@
 
     let toggle = false;
 
+    let imported = false;
+
+    $: if (toggle && ! imported) {
+        document.getElementsByTagName("head")[0].insertAdjacentHTML(
+            'beforeend',
+            '<link rel="stylesheet" type="text/css" href="/tailwind-full.css">'
+        );
+        imported = true;
+    }
+
     const handleTheme = (name) => {
         changeTheme(name);
         spreadAll();
@@ -32,7 +42,7 @@
 
 <Dropdown
     {toggle}
-    on:close={() => { $modal !== 'theme' && (toggle = false) }}
+    on:update={(event) => { toggle = event.detail.value }}
 >
     <div slot="button">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

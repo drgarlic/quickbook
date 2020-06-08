@@ -11,6 +11,7 @@ const regexesOnlineOnly = [
 const regexesCacheFirst = [
     self.location.origin,
     'https://rsms.me/inter/',
+    'cdn',
 ];
 
 const regexesCacheOnly = [
@@ -20,13 +21,12 @@ const regexesCacheOnly = [
 
 // /!\ Warning /!\
 // Variables auto updated by Gulp, do not change them !
-const cacheName = 'cache-quickbook-kaz2x10n';
+const cacheName = 'cache-quickbook-kb5k6s19';
 const filesToPreCache = [
     '/',
     '/index.html',
     '/tailwind.css',
-    '/build/index-89aa2ab8.js',
-    '/build/main-8e8c906f.js',
+    '/tailwind-full.css',
     '/build/main.js'
 ];
 

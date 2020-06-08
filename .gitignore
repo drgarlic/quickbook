@@ -21,7 +21,7 @@ node_modules
 # Production
 # ---
 
-public/tailwind.css
+public/*.css
 public/build
 public/favicons
 *.webp

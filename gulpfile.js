@@ -2,7 +2,7 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const del = require('del');
 const favicons = require('favicons');
-const faviconsConfig = require('./gulp/favicons.json');
+const faviconsConfig = require('./gulp/favicons/config.json');
 const fs = require('fs');
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
@@ -19,6 +19,7 @@ const updateServiceWorker = () => {
         '/',
         '/index.html',
         '/tailwind.css',
+        '/tailwind-full.css',
         ...fs.readdirSync('public/build')
             .filter(e => ! e.endsWith('.map'))
             .map(e => '/build/' + e),
@@ -40,7 +41,7 @@ const generateFavicons = () => {
     faviconsConfig.version = packageJson.version;
     faviconsConfig.url = packageJson.homepage;
 
-    return gulp.src('gulp/favicon.*')
+    return gulp.src('gulp/favicons/icon.*')
         .pipe(favicons.stream(faviconsConfig))
         .pipe(gulp.dest(`public${faviconsConfig.path}`));
 };
@@ -55,10 +56,10 @@ const clean = () => {
 };
 exports.clean = clean;
 
-const _tailwind = (name = 'tailwind') => {
+const _tailwind = (name = 'tailwind', path) => {
     return gulp.src('node_modules/tailwindcss/tailwind.css')
         .pipe(postcss([
-            tailwindcss(`./${name}.config.js`),
+            tailwindcss(path),
             autoprefixer()
         ]))
         .pipe(rename(`${name}.css`))
@@ -68,7 +69,7 @@ const _tailwind = (name = 'tailwind') => {
 const tailwind = () => _tailwind();
 exports.tailwind = tailwind;
 
-const tailwindFull = () => _tailwind('tailwind-full');
+const tailwindFull = () => _tailwind('tailwind-full',  './gulp/tailwind/tailwind-full.config.js');
 exports.tailwindFull = tailwindFull;
 
 const optimizeCss = () => {

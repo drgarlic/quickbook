@@ -29,7 +29,8 @@
 
 <Button
     on:click={() => { input.click() }}
-    secondary
+    tertiary
+    animate
     customPadding="p-2"
 >
     <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
