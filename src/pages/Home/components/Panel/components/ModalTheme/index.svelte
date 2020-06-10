@@ -184,7 +184,7 @@
     <div class="
         flex-1
         overflow-y-auto
-        no-scrollbar
+        scrollbar
     ">
         <div class="
             px-4

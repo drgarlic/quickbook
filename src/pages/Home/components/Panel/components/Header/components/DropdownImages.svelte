@@ -5,7 +5,7 @@
         images,
         textarea,
     } from 'src/js/store';
-    import { insertText } from 'src/js/textarea';
+    import { insertText } from 'src/js/editor';
 
     import Button from 'src/components/Button';
     import Dropdown from 'src/components/Dropdown';
@@ -61,6 +61,7 @@
 
 <Dropdown
     {toggle}
+    label="Images"
     on:update={(event) => { toggle = event.detail.value }}
 >
     <div slot="button">

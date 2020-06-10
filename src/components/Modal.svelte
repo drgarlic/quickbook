@@ -15,9 +15,6 @@
         bottom-0
         inset-0
         p-6
-        {toggle ? 'flex' : ''}
-        items-center
-        justify-center
     ">
         {#if ! noBackground}
             <Transition

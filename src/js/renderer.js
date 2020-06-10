@@ -1,4 +1,4 @@
-// import katex from 'katex';
+import DOMPurify from 'dompurify';
 import {
     cleanUrl,
     escape
@@ -8,6 +8,13 @@ import {
     getClasses,
     getStyles,
 } from './themes';
+
+const sanitizeParams = {
+    ADD_TAGS: [
+        'page',
+        'pbr'
+    ],
+};
 
 export const renderer = {
     blockquote(quote) {
@@ -21,6 +28,7 @@ export const renderer = {
 
     checkbox(checked) {
         return `<input`
+            + ` aria-label="pdf-checkbox"`
             + ` style="${getStyles('checkbox')}"`
             + ` class="marked ${getClasses('checkbox')}"`
             + (checked ? ' checked="" ' : '')
@@ -92,6 +100,10 @@ export const renderer = {
         + ` style="${getStyles('hr')}"`
         + ` class="marked ${getClasses('hr')}"`
         + `${this.options.xhtml ? '/' : ''}>\n`;
+    },
+
+    html(html) {
+        return DOMPurify.sanitize(html, sanitizeParams);
     },
 
     image(href, title, text) {
@@ -197,6 +209,6 @@ export const renderer = {
     },
 
     text(text) {
-        return text.replace(/\n/g, '<br>');
+        return DOMPurify.sanitize(text.replace(/\n/g, '<br>'), sanitizeParams);
     }
 };

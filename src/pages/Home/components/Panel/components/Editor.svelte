@@ -1,4 +1,6 @@
 <script>
+    // import { CodeJar } from 'codejar';
+    // import hljs from 'highlight.js';
     import { onMount } from 'svelte';
     import { get } from 'svelte/store';
 
@@ -10,9 +12,13 @@
     import {
         handleKeydown,
         setSelection,
-    } from 'src/js/textarea';
+    } from 'src/js/editor';
+
+    let editor;
 
     onMount(() => {
+        // CodeJar(editor, hljs.highlightBlock);
+        // CodeJar(editor, editor => { });
         setTimeout(() => setSelection(0), 1000);
     });
 
@@ -43,6 +49,7 @@
     on:keyup={processText}
     placeholder="Write something here..."
     class="
+    mt-4
     bg-gray-50
     flex-1
     p-4
@@ -51,11 +58,33 @@
     w-full
     bg-transparent
     font-mono
-    text-sm
+    subpixel-antialiased
     font-medium
     leading-relaxed
     outline-none
     resize-none
-    no-scrollbar
+    scrollbar
     sm:p-6
+    xl:text-sm
 "/>
+
+<!-- <div
+    bind:this={editor}
+    class="
+    mt-4
+    bg-gray-50
+    flex-1
+    p-4
+    rounded-md
+    shadow-inner
+    w-full
+    bg-transparent
+    font-mono
+    font-medium
+    leading-relaxed
+    outline-none
+    markdown
+    scrollbar
+    sm:p-6
+    xl:text-sm
+"/> -->

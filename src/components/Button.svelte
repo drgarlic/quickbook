@@ -17,7 +17,7 @@
     export let danger = false;
     $: primary = ! secondary && ! tertiary && ! danger;
 
-    export let animate;
+    export let animate = undefined;
     $: _animate = animate !== undefined ? animate : (primary || secondary);
 
     export let customPadding = '';
@@ -120,6 +120,8 @@
 ">
     {#if href}
         <a
+            aria-label={label}
+            title={label}
             href={href.startsWith('http') ? href : '#' + href}
             rel={blank === true ? 'noopener noreferrer' : ''}
             target={blank === true ? '_blank' : ''}
@@ -133,6 +135,7 @@
     {:else if type}
         <button
             aria-label={label}
+            title={label}
             {type}
             class="
             {classes}
@@ -145,6 +148,7 @@
         <button
             on:click={() => { dispatch('click') }}
             aria-label={label}
+            title={label}
             type="button"
             class="
             {classes}

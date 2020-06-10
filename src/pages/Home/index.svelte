@@ -24,9 +24,10 @@
     id="shell"
     class="
     relative
-    flex
     h-screen
     max-w-screen
+    scrollbar
+    xl:flex
 ">
     <Panel />
     <Pages />

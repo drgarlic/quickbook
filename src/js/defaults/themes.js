@@ -20,20 +20,24 @@ export const defaultThemes = {
                 block
                 p-4
                 rounded
+                bg-gray-50
                 text-sm
                 font-medium
                 leading-relaxed
                 break-words
                 whitespace-pre-wrap
+                subpixel-antialiased
             `,
             codespan: `
                 inline
                 px-1
                 py-0.5
                 rounded
+                bg-gray-50
                 text-sm-em
                 break-words
                 whitespace-pre-wrap
+                subpixel-antialiased
             `,
             del: ``,
             em: ``,
@@ -199,20 +203,24 @@ export const defaultThemes = {
                 block
                 p-6
                 rounded
+                bg-gray-50
                 text-sm
                 font-medium
                 leading-relaxed
                 break-words
                 whitespace-pre-wrap
+                subpixel-antialiased
             `,
             codespan: `
                 inline
                 px-2
                 py-1
                 rounded
+                bg-gray-50
                 text-sm-em
                 break-words
                 whitespace-pre-wrap
+                subpixel-antialiased
             `,
             del: ``,
             em: ``,
@@ -387,20 +395,24 @@ export const defaultThemes = {
                 block
                 p-6
                 rounded
+                bg-gray-50
                 text-sm
                 font-medium
                 leading-relaxed
                 break-words
                 whitespace-pre-wrap
+                subpixel-antialiased
             `,
             codespan: `
                 inline
                 px-2
                 py-1
                 rounded
+                bg-gray-50
                 text-sm-em
                 break-words
                 whitespace-pre-wrap
+                subpixel-antialiased
             `,
             del: ``,
             em: ``,

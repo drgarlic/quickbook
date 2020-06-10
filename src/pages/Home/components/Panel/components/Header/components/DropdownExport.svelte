@@ -37,7 +37,6 @@
 
     const downloadBookdown = async () => {
         const compressed = compressToArray(JSON.stringify(getData()));
-        console.log(compressed);
 
         const blob = new Blob(
             [ compressed ],
@@ -71,6 +70,7 @@
 
 <Dropdown
     {toggle}
+    label="Export"
     on:update={(event) => { toggle = event.detail.value }}
 >
     <div slot="button">
@@ -91,7 +91,7 @@
         </DropdownItem>
         <DropdownItem
             onClick={downloadBookdown}
-            text="Export to Bookdown"
+            text="Export to Quickbook"
         >
             <span slot="icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">

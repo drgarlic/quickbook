@@ -2,7 +2,16 @@
     import { onMount } from 'svelte';
 
     import { generatePages } from 'src/js/pages';
-    import { pages } from 'src/js/store';
+    import {
+        pages,
+        showPanel,
+    } from 'src/js/store';
+
+    import Button from 'src/components/Button';
+
+    let width = 0;
+
+    $: width >= 1280 && ($showPanel = true);
 
     onMount(() => {
         setTimeout(() => generatePages(), 1000);
@@ -19,12 +28,12 @@
         width: 210mm;
     }
 
-    :global(.no-scrollbar) {
+    :global(.scrollbar) {
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
 
-    :global(.no-scrollbar::-webkit-scrollbar) {
+    :global(.scrollbar::-webkit-scrollbar) {
         width: 0;
         height: 0;
     }
@@ -53,23 +62,49 @@
     }
 </style>
 
+<svelte:window bind:innerWidth={width}/>
+
 <div
     id="margin"
     class="
-    min-w-1/2
     flex-none
+    block
     bg-gray-100
-    hidden
-    xl:block
+    xl:shadow-inner
+    xl:min-w-1/2
     xl:overflow-y-auto
-    no-scrollbar
+    scrollbar
 ">
     <div
         id="pages"
         bind:this={$pages}
         style="width: calc(794px + 2rem)"
         class="
+        bg-gray-100
+        xl:bg-transparent
         mx-auto
+    " />
+    <div class="
+        fixed
+        bottom-0
+        right-0
+        mx-2
+        sm:mx-8
+        my-4
+        xl:hidden
     ">
+        <Button
+            on:click={() => { $showPanel = true }}
+            tertiary
+            animate
+            customPadding="p-2"
+            class="
+            bg-white
+            shadow
+        ">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z"/>
+            </svg>
+        </Button>
     </div>
 </div>

@@ -5,11 +5,25 @@
     import Button from './Button';
 
     export let toggle;
+    export let label;
 
     let button;
     let dropdown;
 
     const dispatch = createEventDispatcher();
+
+    let position = '-right-22 origin-center';
+
+    // $: {
+    //     if (button) {
+    //         const bb = button.getBoundingClientRect();
+    //         const center = (bb.left + bb.right) / 2;
+
+    //         if (bb.left = )
+    //         position = 'origin-top-right right-0';
+    //         position = '-right-22 origin-center';
+    //     }
+    // }
 
     const onClickOutside = (event) => {
         if (toggle) {
@@ -44,6 +58,7 @@
             active={toggle}
             tertiary
             animate
+            {label}
             customPadding="p-2"
         >
             <slot name="button">
@@ -63,14 +78,11 @@
             bind:this={dropdown}
             class="
             absolute
-            origin-top-right
-            right-0
-            md:-right-22
-            md:origin-center
             mt-2
             w-56
             rounded-md
             shadow-lg
+            {position}
         ">
             <div class="
                 rounded-md

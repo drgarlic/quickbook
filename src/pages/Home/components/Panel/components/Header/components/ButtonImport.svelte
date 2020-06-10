@@ -2,7 +2,7 @@
     import { importData } from 'src/js/importer';
     import { generatePages } from 'src/js/pages';
     import { text } from 'src/js/store';
-    import { setSelection } from 'src/js/textarea';
+    import { setSelection } from 'src/js/editor';
 
     import Button from 'src/components/Button';
 
@@ -31,6 +31,7 @@
     on:click={() => { input.click() }}
     tertiary
     animate
+    label="Import"
     customPadding="p-2"
 >
     <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

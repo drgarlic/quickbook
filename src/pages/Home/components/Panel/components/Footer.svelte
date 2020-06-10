@@ -1,6 +1,6 @@
 <script>
     import {
-        flipView,
+        showPanel,
         pageCounter,
         text,
     } from 'src/js/store';
@@ -15,6 +15,7 @@
 </script>
 
 <div class="
+    mt-4
     flex
     items-center
     justify-between
@@ -33,6 +34,7 @@
             blank
             tertiary
             animate
+            label="Github"
             customPadding="p-2"
         >
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -44,6 +46,7 @@
             blank
             tertiary
             animate
+            label="Feedback"
             customPadding="p-2"
         >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
@@ -96,8 +99,10 @@
             </svg>
         </div>
         <Button
-            on:click={() => { $flipView = true }}
-            secondary
+            on:click={() => { $showPanel = false }}
+            tertiary
+            animate
+            label="Hide panel"
             customPadding="p-2"
             class="
             block

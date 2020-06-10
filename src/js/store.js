@@ -30,8 +30,6 @@ function writableLocalstorage(key, initialValue) {
     };
 }
 
-export const flipView = writable(false);
-
 export const images = writableLocalstorage('images', {});
 
 export const modal = writable(undefined);
@@ -39,6 +37,8 @@ export const modal = writable(undefined);
 export const pages = writable(undefined);
 
 export const pageCounter = writable(0);
+
+export const showPanel = writable(true);
 
 export const stringHTMLold = writable('');
 

@@ -39,15 +39,9 @@ export const getFromTheme = (element, type, theme) => {
     return clean(get(storedThemes)[theme][type][element] || '');
 };
 
-export const getClasses = (element, theme) => {
-    theme = theme || get(storedTheme);
-    return getPre(element, 'classes') + getFromTheme(element, 'classes', theme);
-};
+export const getClasses = (element, theme) => getPre(element, 'classes') + getFromTheme(element, 'classes', theme);
 
-export const getStyles = (element, theme) => {
-    theme = theme || get(storedTheme);
-    return getPre(element, 'styles') + getFromTheme(element, 'styles', theme);
-};
+export const getStyles = (element, theme) => getPre(element, 'styles') + getFromTheme(element, 'styles', theme);
 
 const toArray = (str) => clean(str).split(' ');
 

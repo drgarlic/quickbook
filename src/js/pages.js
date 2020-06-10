@@ -33,21 +33,14 @@ export const generatePages = async () => {
 
     let stringHTML = markdownToHTML(text.trim());
 
-    // console.log(stringHTML);
-
     const diffs = diff.diffLines(get(stringHTMLold), stringHTML);
-
-    console.log('diffs', diffs);
 
     if (pages && (diffs.length > 1 || diffs[0].added || diffs[0].removed)) {
         // Get all elements that didn't change
         const diffStart = diffs[0];
-        const diffEnd = diffs[diffs.length - 1]
+        const diffEnd = diffs[diffs.length - 1];
         const elementsBeforeChanged = ! diffStart.added && ! diffStart.removed ? splitToElements(diffStart.value) : [];
-        console.log('elementsBeforeChanged', elementsBeforeChanged);
-
         const elementsAfterChanged = ! diffEnd.added && ! diffEnd.removed ? splitToElements(diffEnd.value, true) : [];
-        console.log('elementsAfterChanged', elementsAfterChanged);
 
         // Get index of page where the changes starts and get number of elements on the pages before
         let counterElementsBeforePageToChange = 0;
@@ -66,13 +59,13 @@ export const generatePages = async () => {
             page = page.nextSibling;
         }
         // console.log('counterElementsBeforePageToChange', counterElementsBeforePageToChange);
-        console.log('startIndexPagesToChange', startIndexPagesToChange);
+        // console.log('startIndexPagesToChange', startIndexPagesToChange);
 
         // Get the changes in HTML elements
         const reducer = (accumulator, line) => accumulator + line.length;
         const tmpStringHTML = stringHTML.slice(elementsBeforeChanged.reduce(reducer, 0), stringHTML.length - elementsAfterChanged.reduce(reducer, 0));
         const elementsChangedString = splitToElements(tmpStringHTML);
-        console.log('elementsChangedString', elementsChangedString);
+        // console.log('elementsChangedString', elementsChangedString);
 
         let elementsChanged = [];
         elementsChangedString.forEach((elementString) => {
@@ -84,7 +77,7 @@ export const generatePages = async () => {
             tmpDiv.innerHTML = elementString;
             elementsChanged.push(tmpDiv.firstChild);
         });
-        console.log('elementsChanged', elementsChanged);
+        // console.log('elementsChanged', elementsChanged);
 
         // Prefetch images
         await Promise.all(
@@ -109,7 +102,7 @@ export const generatePages = async () => {
 
         // Remove old elements
         page = startPage;
-        console.log('numberElementsRemoved', numberElementsRemoved);
+        // console.log('numberElementsRemoved', numberElementsRemoved);
 
         for (let i = 0; i < numberElementsRemoved; i++) {
             if (! page.classList.contains('marked')) {
@@ -140,14 +133,12 @@ export const generatePages = async () => {
             hljs.highlightBlock(block);
         }));
 
-        console.log('hey');
+        // console.log('hey');
 
         // Spread elements
         console.time('spread');
         spread(page.previousSibling || page);
         console.timeEnd('spread');
-
-        pageCounter.set(pages.children.length);
 
         stringHTMLold.set(stringHTML);
     }
@@ -192,7 +183,7 @@ const replaceLatex = (text) => {
     latexStrings && latexStrings.forEach(latexString => handleLatex(latexString, true));
 
     latexStrings = text.match(/\\\$[^\\\$]*\\\$/g);
-    console.log(latexStrings);
+    // console.log(latexStrings);
 
     latexStrings && latexStrings.forEach(latexString => handleLatex(latexString, false));
 
@@ -292,7 +283,7 @@ const newPage = () => {
 };
 
 export const spreadAll = () => {
-    spread(get(storedPages).firstElementChild, - get(storedPages).children.length);
+    spread(get(storedPages).firstElementChild, - get(pageCounter));
 }
 
 // 10 times slower in Chrome than Firefox
@@ -309,12 +300,6 @@ const spread = (element, counterNoChange = 0) => {
     };
 
     const isNotValid = (element) => {
-        // const pbrs = element.getElementsByTagName('pbr');
-        // const pages = element.getElementsByTagName('page');
-        // return (getLastChildBottom(element) > getMaxHeight(element) && element.childNodes.length > 1)
-        //     || pbrs.length > 1
-        //     || (pbrs.length === 1 && element.lastElementChild.getElementsByTagName('pbr').length !== 1)
-        //     || pages.length > 0;
         const pbrs = [...element.childNodes].filter(x => x.tagName === 'PBR');
         const pages = [...element.childNodes].filter(x => x.tagName === 'PAGE');
         return (getLastChildBottom(element) > getMaxHeight(element) && element.childNodes.length > 1)
@@ -329,10 +314,10 @@ const spread = (element, counterNoChange = 0) => {
 
     if (isCustom(element)) {
         element.nextSibling && spread(element.nextSibling, counterNoChange);
-    } else if (hasNoChild(element) && element.parentNode.lastElementChild !== element) {
+    } else if (hasNoChild(element) && element.parentNode.firstElementChild !== element) {
         let nextSibling = element.nextSibling;
         element.parentNode.removeChild(element);
-        spread(nextSibling, counterNoChange);
+        nextSibling && spread(nextSibling, counterNoChange);
     } else if (isNotValid(element)) {
         while (isNotValid(element)) {
             if (element.lastElementChild.tagName === 'PAGE') {
@@ -342,7 +327,7 @@ const spread = (element, counterNoChange = 0) => {
                 (! element.nextSibling
                     || isCustom(element.nextSibling)
                     || isNotValid(element.nextSibling)
-                    ) && element.parentNode.insertBefore(newPage(), element.nextSibling);
+                ) && element.parentNode.insertBefore(newPage(), element.nextSibling);
                 element.nextSibling.prepend(element.lastElementChild);
             }
         }
@@ -365,4 +350,6 @@ const spread = (element, counterNoChange = 0) => {
             spread(element.nextSibling, counterNoChange + 1);
         }
     }
+
+    pageCounter.set(pages.children.length);
 };

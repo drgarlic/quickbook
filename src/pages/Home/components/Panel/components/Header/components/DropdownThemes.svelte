@@ -42,6 +42,7 @@
 
 <Dropdown
     {toggle}
+    label="Themes"
     on:update={(event) => { toggle = event.detail.value }}
 >
     <div slot="button">
