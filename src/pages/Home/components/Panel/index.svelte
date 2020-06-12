@@ -10,6 +10,8 @@
         modal,
         showPanel,
     } from 'src/js/store';
+
+    export let text;
 </script>
 
 <Transition
@@ -40,7 +42,7 @@
             sm:px-8
         ">
             <Header />
-            <Editor />
+            <Editor {text} />
             <Footer />
             <ModalTheme
                 toggle={$modal === 'theme'}

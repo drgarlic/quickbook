@@ -1,7 +1,4 @@
 <script>
-    import { onMount } from 'svelte';
-
-    import { generatePages } from 'src/js/pages';
     import {
         pages,
         showPanel,
@@ -12,10 +9,6 @@
     let width = 0;
 
     $: width >= 1280 && ($showPanel = true);
-
-    onMount(() => {
-        setTimeout(() => generatePages(), 1000);
-    });
 </script>
 
 <style>
@@ -26,16 +19,6 @@
     :global(page) {
         height: 297mm;
         width: 210mm;
-    }
-
-    :global(.scrollbar) {
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    :global(.scrollbar::-webkit-scrollbar) {
-        width: 0;
-        height: 0;
     }
 
     @page {
@@ -73,7 +56,6 @@
     xl:shadow-inner
     xl:min-w-1/2
     xl:overflow-y-auto
-    scrollbar
 ">
     <div
         id="pages"

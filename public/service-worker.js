@@ -21,7 +21,7 @@ const regexesCacheOnly = [
 
 // /!\ Warning /!\
 // Variables auto updated by Gulp, do not change them !
-const cacheName = 'cache-quickbook-kb5k6s19';
+const cacheName = 'cache-quickbook-kb98vh7l';
 const filesToPreCache = [
     '/',
     '/index.html',

@@ -1,10 +1,10 @@
 <script>
     import { compressToString } from 'src/js/compressors';
-    import { text } from 'src/js/store';
+    import { getText } from 'src/js/editor';
 
     import Button from 'src/components/Button';
 
-    const getCompressedData = () => compressToString(JSON.stringify({ text: $text }));
+    const getCompressedData = () => compressToString(JSON.stringify({ text: getText() }));
 
     const generateShareLink = () => {
         const url = `${window.location.origin}/#/${getCompressedData()}`;

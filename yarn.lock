@@ -529,6 +529,11 @@
   dependencies:
     "@types/node" "*"
 
+ace-builds@^1.4.11:
+  version "1.4.11"
+  resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.4.11.tgz#b1f19a891afcef1d26522473082baf80067e855f"
+  integrity sha512-keACH1d7MvAh72fE/us36WQzOFQPJbHphNpj33pXwVZOM84pTWcdFzIAvngxOGIGLTm7gtUP2eJ4Ku6VaPo8bw==
+
 acorn-node@^1.6.1:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/acorn-node/-/acorn-node-1.8.2.tgz#114c95d64539e53dede23de8b9d96df7c7ae2af8"
@@ -1406,11 +1411,6 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
-
-codejar@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/codejar/-/codejar-3.0.0.tgz#4db0d96ca795d6c8478e2ff08c36d2dadf2aea37"
-  integrity sha512-RlsBpAFvWE7ZDLlpBzGeIQxVtZKGGOPxUIRVuLA/tz/2mmxjz5dZ3jpBJLlXCPN5qj3GAO2lgZor1T9x3MXLXw==
 
 collection-map@^1.0.0:
   version "1.0.0"

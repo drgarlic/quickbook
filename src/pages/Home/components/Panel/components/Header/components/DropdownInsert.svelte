@@ -1,5 +1,4 @@
 <script>
-    import { textarea } from 'src/js/store';
     import { insertText } from 'src/js/editor';
 
     import Button from 'src/components/Button';
@@ -9,7 +8,7 @@
     let toggle = false;
 
     const handleInsert = (content) => {
-        insertText(content, $textarea.selectionEnd, { newLine: true });
+        insertText(content, { newLine: true });
     };
 </script>
 

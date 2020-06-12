@@ -3,8 +3,8 @@
         compressToArray,
         compressToString,
     } from 'src/js/compressors';
+    import { getText } from 'src/js/editor';
     import { getUsedImages } from 'src/js/images';
-    import { text } from 'src/js/store';
 
     import Button from 'src/components/Button';
     import Dropdown from 'src/components/Dropdown';
@@ -14,8 +14,8 @@
 
     const getData = () => {
         return {
-            text: $text,
-            images: getUsedImages($text)
+            text: getText(),
+            images: getUsedImages(getText())
         }
     };
 
@@ -29,11 +29,19 @@
 
     const downloadMarkdown = async () => {
         const blob = new Blob(
-            [ $text ],
+            [ getText() ],
             { type: 'text/plain' }
         );
         download(blob, 'bookdown.md');
-    }
+    };
+
+    const downloadHTML = async () => {
+        // const blob = new Blob(
+        //     [ getText() ],
+        //     { type: 'text/plain' }
+        // );
+        // download(blob, 'bookdown.md');
+    };
 
     const downloadBookdown = async () => {
         const compressed = compressToArray(JSON.stringify(getData()));
@@ -82,6 +90,16 @@
         <DropdownItem
             onClick={downloadMarkdown}
             text="Export to Markdown"
+        >
+            <span slot="icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd"/>
+                </svg>
+            </span>
+        </DropdownItem>
+        <DropdownItem
+            onClick={downloadHTML}
+            text="Export to HTML"
         >
             <span slot="icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">

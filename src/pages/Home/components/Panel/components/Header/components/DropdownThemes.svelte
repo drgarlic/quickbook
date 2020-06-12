@@ -3,8 +3,6 @@
     import { spreadAll } from 'src/js/pages';
     import {
         modal,
-        pages,
-        theme,
         themes,
     } from 'src/js/store';
     import {

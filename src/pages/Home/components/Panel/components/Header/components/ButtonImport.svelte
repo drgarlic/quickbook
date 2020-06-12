@@ -1,8 +1,6 @@
 <script>
+    import { setText } from 'src/js/editor';
     import { importData } from 'src/js/importer';
-    import { generatePages } from 'src/js/pages';
-    import { text } from 'src/js/store';
-    import { setSelection } from 'src/js/editor';
 
     import Button from 'src/components/Button';
 
@@ -15,14 +13,12 @@
         if (file) {
             const extension = file.name.split('.').pop();
             if (extension === 'md') {
-                $text = await file.text();
+                setText(await file.text());
             } else {
                 const buffer = await file.arrayBuffer();
                 const data = new Uint8Array(buffer);
-                importData(data);
+                setText(importData(data));
             }
-            generatePages();
-            setSelection(0);
         }
     };
 </script>

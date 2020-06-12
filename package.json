@@ -12,7 +12,7 @@
   "main": "src/main.js",
   "license": "MIT",
   "dependencies": {
-    "codejar": "^3.0.0",
+    "ace-builds": "^1.4.11",
     "compressorjs": "^1.0.6",
     "diff": "^4.0.2",
     "dompurify": "^2.0.11",

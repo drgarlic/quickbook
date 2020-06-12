@@ -8,10 +8,10 @@ import { get } from 'svelte/store';
 import { getUsedImages } from './images';
 import { renderer } from './renderer';
 import {
-    pageCounter,
+    editor,
+    informations,
     pages as storedPages,
     stringHTMLold,
-    text as storedText,
 } from './store';
 import {
     getClasses,
@@ -29,7 +29,7 @@ export const generatePages = async () => {
 
     const pages = get(storedPages);
 
-    const text = get(storedText);
+    const text = get(editor).getValue();
 
     let stringHTML = markdownToHTML(text.trim());
 
@@ -139,6 +139,12 @@ export const generatePages = async () => {
         console.time('spread');
         spread(page.previousSibling || page);
         console.timeEnd('spread');
+
+        informations.set({
+            charactersCounter: text.replace(/\s+/g, '').length,
+            wordsCounter: text.trim().split(/\s+/).filter(x => x !== '').length,
+            pageCounter: pages.children.length,
+        })
 
         stringHTMLold.set(stringHTML);
     }
@@ -283,7 +289,7 @@ const newPage = () => {
 };
 
 export const spreadAll = () => {
-    spread(get(storedPages).firstElementChild, - get(pageCounter));
+    spread(get(storedPages).firstElementChild, - get(informations).pageCounter);
 }
 
 // 10 times slower in Chrome than Firefox
@@ -350,6 +356,4 @@ const spread = (element, counterNoChange = 0) => {
             spread(element.nextSibling, counterNoChange + 1);
         }
     }
-
-    pageCounter.set(pages.children.length);
 };

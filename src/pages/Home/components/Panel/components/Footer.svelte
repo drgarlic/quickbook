@@ -1,17 +1,10 @@
 <script>
     import {
         showPanel,
-        pageCounter,
-        text,
+        informations,
     } from 'src/js/store';
 
     import Button from 'src/components/Button';
-
-    // $: columnNumber = $cursor.start === $cursor.end ? $cursor.start : `(${$cursor.start}, ${$cursor.end})`;
-    // $: lineNumber = $cursor.lineStart === $cursor.lineEnd ? $cursor.lineStart : `(${$cursor.lineStart}, ${$cursor.lineEnd})`;
-
-    $: charactersCounter = $text.replace(/\s+/g, '').length;
-    $: wordsCounter = $text.trim().split(/\s+/).filter(x => x !== '').length;
 </script>
 
 <div class="
@@ -61,6 +54,9 @@
         sm:space-x-6
         pl-2
         xl:pr-2
+        transition-opacity
+        ease-out
+        {$informations.pageCounter === 0 ? 'opacity-0' : 'opacity-100 duration-1000'}
     ">
         <div class="
             flex
@@ -68,7 +64,7 @@
             space-x-2
         ">
             <p>
-                {charactersCounter}
+                {$informations.charactersCounter}
             </p>
             <svg class="text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M12 10a2 2 0 11-4 0 2 2 0 014 0z"/>
@@ -80,7 +76,7 @@
             space-x-2
         ">
             <p>
-                {wordsCounter}
+                {$informations.wordsCounter}
             </p>
             <svg class="text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"/>
@@ -92,7 +88,7 @@
             space-x-2
         ">
             <p>
-                {$pageCounter}
+                {$informations.pageCounter}
             </p>
             <svg class="text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>

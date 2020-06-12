@@ -1,54 +1,17 @@
 <script>
-    // import { CodeJar } from 'codejar';
-    // import hljs from 'highlight.js';
     import { onMount } from 'svelte';
-    import { get } from 'svelte/store';
 
-    import { generatePages } from 'src/js/pages';
-    import {
-        text,
-        textarea,
-    } from 'src/js/store';
-    import {
-        handleKeydown,
-        setSelection,
-    } from 'src/js/editor';
+    import { initEditor } from 'src/js/editor';
+    import { informations } from 'src/js/store';
 
-    let editor;
+    export let text;
 
     onMount(() => {
-        // CodeJar(editor, hljs.highlightBlock);
-        // CodeJar(editor, editor => { });
-        setTimeout(() => setSelection(0), 1000);
+        initEditor(text);
     });
-
-    let STATE = {
-        IDLE: 0,
-        RUNNING: 1,
-    };
-
-    let state = STATE.IDLE;
-
-    const processText = async () => {
-        if (state === STATE.IDLE) {
-            const handle = async () => {
-                await generatePages();
-                cancelAnimationFrame(id);
-                state = STATE.IDLE;
-            };
-            state = STATE.RUNNING;
-            let id = requestAnimationFrame(handle);
-        }
-    };
 </script>
 
-<textarea
-    bind:this={$textarea}
-    bind:value={$text}
-    on:keydown={handleKeydown}
-    on:keyup={processText}
-    placeholder="Write something here..."
-    class="
+<div class="
     mt-4
     bg-gray-50
     flex-1
@@ -56,35 +19,25 @@
     rounded-md
     shadow-inner
     w-full
-    bg-transparent
-    font-mono
-    subpixel-antialiased
-    font-medium
-    leading-relaxed
-    outline-none
-    resize-none
-    scrollbar
     sm:p-6
-    xl:text-sm
-"/>
-
-<!-- <div
-    bind:this={editor}
-    class="
-    mt-4
-    bg-gray-50
-    flex-1
-    p-4
-    rounded-md
-    shadow-inner
-    w-full
-    bg-transparent
-    font-mono
-    font-medium
-    leading-relaxed
-    outline-none
-    markdown
-    scrollbar
-    sm:p-6
-    xl:text-sm
-"/> -->
+">
+    <div class="
+        h-full
+        w-full
+        transition-opacity
+        ease-out
+        {$informations.pageCounter === 0 ? 'opacity-0' : 'opacity-100 duration-1000'}
+    ">
+        <div
+            id="editor"
+            class="
+            h-full
+            w-full
+            font-mono
+            subpixel-antialiased
+            leading-relaxed
+            text-base
+            xl:text-sm
+        "/>
+    </div>
+</div>

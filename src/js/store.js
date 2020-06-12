@@ -6,14 +6,13 @@ import {
 } from 'svelte/store';
 
 import {
-    defaultText,
     defaultTheme,
     defaultThemes,
 } from 'src/js/defaults';
 
 function writableLocalstorage(key, initialValue) {
     const store = writable(initialValue);
-    const {subscribe, set} = store;
+    const { subscribe, set } = store;
     const json = localStorage.getItem(key);
     json && set(JSON.parse(json) || initialValue);
 
@@ -30,21 +29,25 @@ function writableLocalstorage(key, initialValue) {
     };
 }
 
+export const editor = writable(undefined);
+
 export const images = writableLocalstorage('images', {});
+
+export const informations = writable({
+    charactersCounter: 0,
+    wordsCounter: 0,
+    pageCounter: 0,
+});
 
 export const modal = writable(undefined);
 
 export const pages = writable(undefined);
 
-export const pageCounter = writable(0);
+export const processing = writable(false);
 
 export const showPanel = writable(true);
 
 export const stringHTMLold = writable('');
-
-export const text = writableLocalstorage('text', defaultText);
-
-export const textarea = writable(undefined);
 
 export const theme = writableLocalstorage('theme', defaultTheme);
 

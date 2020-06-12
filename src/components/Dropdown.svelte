@@ -78,6 +78,7 @@
             bind:this={dropdown}
             class="
             absolute
+            z-20
             mt-2
             w-56
             rounded-md

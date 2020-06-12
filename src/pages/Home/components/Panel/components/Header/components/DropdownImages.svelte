@@ -1,11 +1,8 @@
 <script>
     import Compressor from 'compressorjs';
 
-    import {
-        images,
-        textarea,
-    } from 'src/js/store';
     import { insertText } from 'src/js/editor';
+    import { images } from 'src/js/store';
 
     import Button from 'src/components/Button';
     import Dropdown from 'src/components/Dropdown';
@@ -16,7 +13,7 @@
     let files;
 
     const handleImage = (name) => {
-        setTimeout(() => insertText(`![${name}](${name})`, $textarea.selectionEnd), 500);
+        setTimeout(() => insertText(`![${name}](${name})`), 500);
     };
 
     const handleFiles = async () => {

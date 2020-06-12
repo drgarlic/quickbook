@@ -1,7 +1,6 @@
 <script>
     import packageJson from 'src/../package.json';
 
-    import { defaultTheme } from 'src/js/defaults';
     import { importData } from 'src/js/importer';
     import { initializeThemes } from 'src/js/themes';
 
@@ -12,7 +11,7 @@
 
     initializeThemes();
 
-    importData(params.data);
+    const text = importData(params.data);
 </script>
 
 <svelte:head>
@@ -26,9 +25,8 @@
     relative
     h-screen
     max-w-screen
-    scrollbar
     xl:flex
 ">
-    <Panel />
+    <Panel {text} />
     <Pages />
 </div>
