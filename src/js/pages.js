@@ -140,11 +140,7 @@ export const generatePages = async () => {
         spread(page.previousSibling || page);
         console.timeEnd('spread');
 
-        informations.set({
-            charactersCounter: text.replace(/\s+/g, '').length,
-            wordsCounter: text.trim().split(/\s+/).filter(x => x !== '').length,
-            pageCounter: pages.children.length,
-        })
+        updateInformations();
 
         stringHTMLold.set(stringHTML);
     }
@@ -288,8 +284,18 @@ const newPage = () => {
     return page;
 };
 
+const updateInformations = () => {
+    const text = get(editor).getValue();
+    informations.set({
+        charactersCounter: text.replace(/\s+/g, '').length,
+        wordsCounter: text.trim().split(/\s+/).filter(x => x !== '').length,
+        pageCounter: get(storedPages).children.length,
+    });
+}
+
 export const spreadAll = () => {
     spread(get(storedPages).firstElementChild, - get(informations).pageCounter);
+    updateInformations();
 }
 
 // 10 times slower in Chrome than Firefox

@@ -1,5 +1,6 @@
 <script>
     import {
+        informations,
         pages,
         showPanel,
     } from 'src/js/store';
@@ -65,6 +66,7 @@
         bg-gray-100
         xl:bg-transparent
         mx-auto
+        {$informations.pageCounter === 0 ? 'opacity-0' : 'opacity-100 duration-1000'}
     " />
     <div class="
         fixed
@@ -79,6 +81,7 @@
             on:click={() => { $showPanel = true }}
             tertiary
             animate
+            label="Show panel"
             customPadding="p-2"
             class="
             bg-white

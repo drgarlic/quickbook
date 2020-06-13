@@ -37,7 +37,7 @@
         bind:this={input}
         bind:files
         on:change={handleInput}
-        accept=".md, .bkd"
+        accept=".md, .qb"
         type="file"
         class="
         hidden

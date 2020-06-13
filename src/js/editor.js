@@ -101,7 +101,7 @@ export const insertText = (insertion, options = {}) => {
 
     const { newLine } = options;
 
-    // if (newLine) {
+    if (newLine) {
     //     if (text[index - 1] && text[index - 1] !== '\n') {
     //         insertion = '\n\n' + insertion;
     //     } else if (text[index - 2] && text[index - 2] !== '\n') {
@@ -111,7 +111,7 @@ export const insertText = (insertion, options = {}) => {
     //     } else if (text[index + 1] && text[index + 1] !== '\n') {
     //         insertion += '\n';
     //     }
-    // }
+    }
 
     get(editor).session.replace(get(editor).selection.getRange(), insertion);
 };

@@ -12,6 +12,7 @@
 >
     <div class="
         {positionAbsolute ? 'absolute' : 'fixed'}
+        z-30
         bottom-0
         inset-0
         p-6

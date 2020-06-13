@@ -5,6 +5,7 @@
     } from 'src/js/compressors';
     import { getText } from 'src/js/editor';
     import { getUsedImages } from 'src/js/images';
+    import { pages } from 'src/js/store';
 
     import Button from 'src/components/Button';
     import Dropdown from 'src/components/Dropdown';
@@ -32,25 +33,25 @@
             [ getText() ],
             { type: 'text/plain' }
         );
-        download(blob, 'bookdown.md');
+        download(blob, 'quickbook.md');
     };
 
     const downloadHTML = async () => {
-        // const blob = new Blob(
-        //     [ getText() ],
-        //     { type: 'text/plain' }
-        // );
-        // download(blob, 'bookdown.md');
+        const blob = new Blob(
+            [ $pages.innerHTML ],
+            { type: 'text/plain' }
+        );
+        download(blob, 'quickbook.html');
     };
 
-    const downloadBookdown = async () => {
+    const downloadQuickbook = async () => {
         const compressed = compressToArray(JSON.stringify(getData()));
 
         const blob = new Blob(
             [ compressed ],
             { type: 'octet/stream' }
         );
-        download(blob, 'save.bkd');
+        download(blob, 'quickbook.qb');
     };
 
     const downloadPDF = async () => {
@@ -72,7 +73,7 @@
             { type: 'application/pdf' }
         );
 
-        download(blob, 'document.pdf');
+        download(blob, 'quickbook.pdf');
     }
 </script>
 
@@ -108,7 +109,7 @@
             </span>
         </DropdownItem>
         <DropdownItem
-            onClick={downloadBookdown}
+            onClick={downloadQuickbook}
             text="Export to Quickbook"
         >
             <span slot="icon">

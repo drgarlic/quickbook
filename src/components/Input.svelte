@@ -18,6 +18,9 @@
         transition
         duration-150
         ease-in-out
+        bg-gray-100
+        border-gray-100
+        focus:bg-white
         focus:border-gray-600
         focus:shadow-outline-gray
         sm:text-sm

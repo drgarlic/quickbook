@@ -7,7 +7,7 @@
     export let href = undefined;
     export let blank = false;
     export let type = undefined;
-    export let label = '';
+    export let label;
 
     export let big = false;
     export let active = false;
@@ -28,7 +28,7 @@
     $: {
         size = `
             ${customPadding || 'px-4 py-2'}
-            sm:text-sm
+            text-sm
             sm:leading-5
             space-x-1
         `;

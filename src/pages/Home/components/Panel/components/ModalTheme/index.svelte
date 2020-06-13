@@ -12,6 +12,7 @@
 
     import Button from 'src/components/Button';
     import Input from 'src/components/Input';
+    import Link from 'src/components/Link';
     import Modal from 'src/components/Modal';
     import Tuple from './components/Tuple';
 
@@ -155,26 +156,37 @@
     ">
         <div class="
             flex
-            items-center
             justify-between
+            items-center
         ">
-            <h2 class="
-                text-xl
-                font-bold
-                leading-7
-                truncate
-                text-gray-900
-                sm:text-2xl
-                sm:leading-9
-            ">
-                Theme customization
-            </h2>
+            <div>
+                <h2 class="
+                    text-xl
+                    font-bold
+                    leading-7
+                    truncate
+                    text-gray-900
+                    sm:text-2xl
+                    sm:leading-9
+                ">
+                    Theme customization
+                </h2>
+                <p class="
+                    m-1
+                    text-sm
+                    leading-5
+                    text-gray-500
+                ">
+                    You can use all the CSS classes from <Link href="https://tailwindcss.com" label="Go to tailwind documentation">Tailwind CSS</Link> and for those interested, here's the <Link href="https://github.com/gawlk/quickbook/blob/master/tailwind.config.js" label="Go to tailwind configuration file">configuration file used</Link>
+                </p>
+            </div>
             <span class="
-                shadow-sm
-                rounded-md
+                flex-none
+                ml-1
             ">
                 <Button
                     on:click={() => { $modal = undefined }}
+                    label="Go back"
                 >
                     Go back
                 </Button>

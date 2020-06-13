@@ -1,8 +1,8 @@
 {
     "path": "/favicons/",
 
-    "background": "#ff5a1f",
-    "theme_color": "#ff5a1f",
+    "background": "#ffffff",
+    "theme_color": "#ffffff",
     "appleStatusBarStyle": "default",
 
     "scope": "/",
@@ -18,27 +18,27 @@
 
     "icons": {
         "android": {
-            "background": "#ff5a1f",
-            "offset": 5
+            "background": "#ffffff",
+            "offset": 10
         },
         "appleIcon": {
-            "offset": 5
+            "offset": 10
         },
         "appleStartup": {
-            "offset": 10
+            "offset": 15
         },
         "coast": false,
         "favicons": {
-            "background": "#ff5a1f",
-            "offset": 5
+            "background": "#ffffff",
+            "offset": 10
         },
         "firefox": {
-            "offset": 10,
+            "offset": 15,
             "overlayGlow": false
         },
         "windows": {
-            "background": "#ff5a1f",
-            "offset": 5
+            "background": "#ffffff",
+            "offset": 10
         },
         "yandex": false
     }
