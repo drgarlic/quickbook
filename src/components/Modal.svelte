@@ -10,60 +10,74 @@
 <Transition
     {toggle}
 >
-    <div class="
+    <div
+        id="modal"
+        class="
         {positionAbsolute ? 'absolute' : 'fixed'}
         z-30
         bottom-0
         inset-0
         p-6
     ">
-        {#if ! noBackground}
+        <div class="
+            flex
+            items-end
+            sm:items-center
+            sm:justify-center
+            w-full
+            h-full
+        ">
+
+            {#if ! noBackground}
+                <Transition
+                    transitions="transition-opacity"
+                    inTransition="ease-out duration-300"
+                    inState="opacity-0"
+                    onState="opacity-100"
+                    outTransition="ease-in duration-200"
+                >
+                    <div class="
+                        {positionAbsolute ? 'absolute' : 'fixed'}
+                        inset-0
+                    ">
+                        <div class="
+                            absolute
+                            inset-0
+                            bg-gray-500
+                            opacity-75
+                        "/>
+                    </div>
+                </Transition>
+            {/if}
+
             <Transition
-                transitions="transition-opacity"
+                transitions="transition transform"
                 inTransition="ease-out duration-300"
-                inState="opacity-0"
-                onState="opacity-100"
+                inState="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                onState="opacity-100 translate-y-0 sm:scale-100"
                 outTransition="ease-in duration-200"
             >
                 <div class="
-                    {positionAbsolute ? 'absolute' : 'fixed'}
-                    inset-0
-                    bg-gray-500
-                    opacity-75
-                "></div>
-            </Transition>
-        {/if}
-
-        <Transition
-            transitions="transition transform"
-            inTransition="ease-out duration-300"
-            inState="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            onState="opacity-100 translate-y-0 sm:scale-100"
-            outTransition="ease-in duration-200"
-        >
-            <div class="
-                rounded-lg
-                shadow-xl
-                max-h-full
-                {full ? 'h-full w-full' : 'w-2xl'}
-            ">
-                <div
-                    role="dialog"
-                    aria-modal="true"
-                    aria-labelledby="modal-headline"
-                    class="
-                    bg-white
                     rounded-lg
-                    shadow-xs
-                    max-h-full
-                    flex
-                    flex-col
+                    shadow-xl
+                    {full ? 'max-h-full h-full w-full' : 'sm:max-w-lg sm:w-full'}
                 ">
-                    <slot>
-                        Content
-                    </slot>
+                    <div
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="modal-headline"
+                        class="
+                        bg-white
+                        rounded-lg
+                        shadow-xs
+                        {full ? 'max-h-full flex flex-col' : ''}
+                    ">
+                        <slot>
+                            Content
+                        </slot>
+                    </div>
                 </div>
-            </div>
-        </Transition>
+            </Transition>
+        </div>
     </div>
 </Transition>

@@ -10,8 +10,10 @@
     import Button from 'src/components/Button';
     import Dropdown from 'src/components/Dropdown';
     import DropdownItem from 'src/components/DropdownItem';
+    import Modal from 'src/components/Modal';
 
     let toggle = false;
+    let toggleModal = false;
 
     const getData = () => {
         return {
@@ -54,27 +56,27 @@
         download(blob, 'quickbook.qb');
     };
 
-    const downloadPDF = async () => {
-        const body = compressToString(JSON.stringify(getData()));
+    // const downloadPDF = async () => {
+    //     const body = compressToString(JSON.stringify(getData()));
 
-        const res = await fetch(
-            `${window.location.origin}/api/pdf`,
-            {
-                method: 'POST',
-                headers: { 'Accept': 'application/pdf' },
-                body,
-            }
-        );
+    //     const res = await fetch(
+    //         `${window.location.origin}/api/pdf`,
+    //         {
+    //             method: 'POST',
+    //             headers: { 'Accept': 'application/pdf' },
+    //             body,
+    //         }
+    //     );
 
-        const data = await res.arrayBuffer();
+    //     const data = await res.arrayBuffer();
 
-        const blob = new Blob(
-            [ data ],
-            { type: 'application/pdf' }
-        );
+    //     const blob = new Blob(
+    //         [ data ],
+    //         { type: 'application/pdf' }
+    //     );
 
-        download(blob, 'quickbook.pdf');
-    }
+    //     download(blob, 'quickbook.pdf');
+    // }
 </script>
 
 <Dropdown
@@ -119,7 +121,7 @@
             </span>
         </DropdownItem>
         <DropdownItem
-            onClick={downloadPDF}
+            onClick={() => { toggleModal = true; }}
             text="Export to PDF"
         >
             <span slot="icon">
@@ -131,3 +133,94 @@
         </DropdownItem>
     </div>
 </Dropdown>
+
+<Modal
+    toggle={toggleModal}
+>
+    <div class="
+        px-4
+        pt-5
+        pb-4
+        sm:p-6
+    ">
+        <div class="
+            mx-auto
+            flex
+            items-center
+            justify-center
+            h-12 w-12
+            rounded-full
+            bg-gray-100
+        ">
+            <svg class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+            </svg>
+        </div>
+        <div class="
+            mt-3
+            text-center
+            sm:mt-5
+            space-y-4
+        ">
+            <h3
+                id="modal-headline"
+                class="
+                text-lg
+                leading-6
+                font-medium
+                text-gray-900
+            ">
+                Export to PDF
+            </h3>
+            <div class="
+                text-sm
+                leading-5
+                text-gray-500
+                space-y-2
+            ">
+                <p>
+                    The servers for the PDF generation are being developped as we speak.
+                </p>
+                <p>
+                    That is why, for now, only <strong>Chrome (and Chrome based)</strong> users can export to PDFs.
+                </p>
+                <p>
+                    It is possible thanks to the <strong>Print</strong> functionnality of the browser. All you have to do is remember to set <strong>Margins</strong> to <strong>None</strong>, <strong>enable</strong> the <strong>Background graphics</strong> option, and finally <strong>save as PDF</strong>.
+                </p>
+            </div>
+        </div>
+        <div class="
+            mt-5
+            sm:mt-6
+            sm:grid
+            sm:grid-cols-2
+            sm:gap-3
+            sm:grid-flow-row-dense
+        ">
+            <span class="
+                flex
+                w-full
+                rounded-md
+                shadow-sm
+                sm:col-start-2
+            ">
+                <button on:click={() => { window.print(); }} type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-gray-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                    Continue
+                </button>
+            </span>
+            <span class="
+                mt-3
+                flex
+                w-full
+                rounded-md
+                shadow-sm
+                sm:mt-0
+                sm:col-start-1
+            ">
+                <button on:click={() => { toggleModal = false }} type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-gray-300 focus:shadow-outline-gray transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                    Cancel
+                </button>
+            </span>
+        </div>
+    </div>
+</Modal>

@@ -27,7 +27,7 @@
     }
 
     @media print {
-        :global(#panel) {
+        :global(#panel, #buttons, #modal) {
             display: none;
         }
 
@@ -68,7 +68,9 @@
         mx-auto
         {$informations.pageCounter === 0 ? 'opacity-0' : 'opacity-100 duration-1000'}
     " />
-    <div class="
+    <div
+        id="buttons"
+        class="
         fixed
         bottom-0
         right-0
