@@ -3,8 +3,8 @@ import 'ace-builds/src-noconflict/ext-searchbox.js';
 import 'ace-builds/src-noconflict/mode-markdown.js';
 import { get } from 'svelte/store';
 
-import { importData } from 'src/js/importer';
-import { generatePages } from 'src/js/pages';
+import { importData } from '/src/js/importer';
+import { generatePages } from '/src/js/pages';
 import {
     editor,
     processing,
@@ -74,7 +74,7 @@ export const handleKeydown = (event) => {
 };
 
 export const initEditor = (text) => {
-    ace.config.set('basePath', '/assets/js/ace/');
+    ace.config.set('basePath', '/js/');
 
     // https://github.com/ajaxorg/ace/wiki/Configuring-Ace
     editor.set(ace.edit('editor', {

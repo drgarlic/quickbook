@@ -1,8 +1,10 @@
-import diff from 'diff';
+import * as diff from 'diff';
 import emojiNameMap from 'emoji-name-map';
-import hljs from 'highlight.js';
 import katex from 'katex';
 import marked from 'marked';
+import prismCore from 'prismjs/components/prism-core';
+import 'prismjs/plugins/autoloader/prism-autoloader';
+prismCore.plugins.autoloader.languages_path = 'https://unpkg.com/prismjs@latest/components/';
 import { get } from 'svelte/store';
 
 import { getUsedImages } from './images';
@@ -127,10 +129,16 @@ export const generatePages = async () => {
         elementsChanged.reverse().forEach((element) => element && page.insertBefore(element, page.children[startIndexChangedElement]));
         // console.log('page.children', page.children);
 
-
         // Add colors to code blocks
         elementsChanged.forEach(element => element.querySelectorAll('code').forEach((block) => {
-            hljs.highlightBlock(block);
+            prismCore.highlightElement(block, false);
+            // let language = block.classList.value.split(' ').filter(x => x.startsWith('language-'));
+            // if (language.length > 0) {
+            //     language = language[0].split('-')[1];
+            //     if (Prism.languages[language]) {
+            //         block.innerHTML = Prism.highlight(block.innerHTML, Prism.languages[language], language);
+            //     }
+            // }
         }));
 
         // console.log('hey');
@@ -155,7 +163,7 @@ const markdownToHTML = (text) => {
 };
 
 const replaceEmojis = (text) => {
-    const emojiNames = text.match(/:[^:]*:/g);
+    const emojiNames = text.match(/:[^(:| |>|<)]*:/g);
 
     if (emojiNames) {
         emojiNames.forEach((emojiName) => {

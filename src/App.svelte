@@ -2,8 +2,8 @@
     // import * as ackeeTracker from 'ackee-tracker';
 
     import './js/sw';
-    import BannerUpdate from './components/BannerUpdate';
-    import Router from './Router';
+    import BannerUpdate from './components/BannerUpdate.svelte';
+    import Router from './Router.svelte';
 
     // Remember to stop the record when navigating to a new page
     // const instance = ackeeTracker.create({

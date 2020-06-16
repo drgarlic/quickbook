@@ -1,9 +1,9 @@
 <script>
-    import { compressToString } from 'src/js/compressors';
-    import { getText } from 'src/js/editor';
+    import { compressToString } from '/src/js/compressors';
+    import { getText } from '/src/js/editor';
 
-    import Button from 'src/components/Button';
-    import Notification from 'src/components/Notification';
+    import Button from '/src/components/Button.svelte';
+    import Notification from '/src/components/Notification.svelte';
 
     const getCompressedData = () => compressToString(JSON.stringify({ text: getText() }));
 

@@ -2,7 +2,7 @@
     import { createEventDispatcher } from 'svelte';
     import Transition from 'svelte-class-transition';
 
-    import Button from './Button';
+    import Button from './Button.svelte';
 
     export let toggle;
     export let label;

@@ -1,12 +1,12 @@
 <script>
     import Compressor from 'compressorjs';
 
-    import { insertText } from 'src/js/editor';
-    import { images } from 'src/js/store';
+    import { insertText } from '/src/js/editor';
+    import { images } from '/src/js/store';
 
-    import Button from 'src/components/Button';
-    import Dropdown from 'src/components/Dropdown';
-    import DropdownItem from 'src/components/DropdownItem';
+    import Button from '/src/components/Button.svelte';
+    import Dropdown from '/src/components/Dropdown.svelte';
+    import DropdownItem from '/src/components/DropdownItem.svelte';
 
     let toggle = false;
     let input;

@@ -1,8 +1,8 @@
 <script>
     import { onMount } from 'svelte';
 
-    import { initEditor } from 'src/js/editor';
-    import { informations } from 'src/js/store';
+    import { initEditor } from '/src/js/editor';
+    import { informations } from '/src/js/store';
 
     export let text;
 

@@ -1,10 +1,10 @@
 <script>
-    import ButtonImport from './components/ButtonImport';
-    import ButtonShare from './components/ButtonShare';
-    import DropdownExport from './components/DropdownExport';
-    import DropdownImages from './components/DropdownImages';
-    import DropdownInsert from './components/DropdownInsert';
-    import DropdownThemes from './components/DropdownThemes';
+    import ButtonImport from './components/ButtonImport.svelte';
+    import ButtonShare from './components/ButtonShare.svelte';
+    import DropdownExport from './components/DropdownExport.svelte';
+    import DropdownImages from './components/DropdownImages.svelte';
+    import DropdownInsert from './components/DropdownInsert.svelte';
+    import DropdownThemes from './components/DropdownThemes.svelte';
 </script>
 
 <div class="

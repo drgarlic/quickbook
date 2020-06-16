@@ -1,4 +1,10 @@
 # ---
+# Local
+# ---
+
+*.local
+
+# ---
 # Mac OS
 # ---
 
@@ -12,24 +18,21 @@
 node_modules
 
 # ---
-# Now
+# Vercel
 # ---
 
-.now
+.vercel
 
 # ---
 # Production
 # ---
 
-public/*.css
-public/build
+dist/
 public/favicons
-*.webp
+public/**/*.webp
 
 # ---
 # Yarn
 # ---
 
 yarn-error.log
-
-.vercel

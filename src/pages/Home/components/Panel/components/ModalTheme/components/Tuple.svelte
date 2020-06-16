@@ -1,18 +1,18 @@
 <script>
-    import { defaultThemes } from 'src/js/defaults';
-    import { spreadAll } from 'src/js/pages';
+    import { defaultThemes } from '/src/js/defaults';
+    import { spreadAll } from '/src/js/pages';
     import {
         theme,
         themes,
-    } from 'src/js/store';
+    } from '/src/js/store';
     import {
         clean,
         getFromTheme,
         updateType,
-    } from 'src/js/themes';
+    } from '/src/js/themes';
 
-    import Button from 'src/components/Button';
-    import Input from 'src/components/Input';
+    import Button from '/src/components/Button.svelte';
+    import Input from '/src/components/Input.svelte';
 
     export let element;
     export let label;

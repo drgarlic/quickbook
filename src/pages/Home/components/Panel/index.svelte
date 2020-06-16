@@ -1,15 +1,15 @@
 <script>
     import Transition from 'svelte-class-transition';
 
-    import Editor from './components/Editor';
-    import Footer from './components/Footer';
-    import Header from './components/Header';
-    import ModalTheme from './components/ModalTheme';
+    import Editor from './components/Editor.svelte';
+    import Footer from './components/Footer.svelte';
+    import Header from './components/Header/index.svelte';
+    import ModalTheme from './components/ModalTheme/index.svelte';
 
     import {
         modal,
         showPanel,
-    } from 'src/js/store';
+    } from '/src/js/store';
 
     export let text;
 </script>

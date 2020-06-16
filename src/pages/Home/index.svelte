@@ -1,11 +1,11 @@
 <script>
-    import packageJson from 'src/../package.json';
+    import packageJson from '/src/../package.json';
 
-    import { importData } from 'src/js/importer';
-    import { initializeThemes } from 'src/js/themes';
+    import { importData } from '/src/js/importer';
+    import { initializeThemes } from '/src/js/themes';
 
-    import Panel from './components/Panel';
-    import Pages from './components/Pages';
+    import Panel from './components/Panel/index.svelte';
+    import Pages from './components/Pages.svelte';
 
     export let params = {};
 

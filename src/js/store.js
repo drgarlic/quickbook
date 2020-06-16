@@ -1,5 +1,4 @@
-
-import cloneDeep from 'clone-deep';
+import { cloneDeep } from 'micro-dash';
 import {
     get,
     writable,
@@ -8,7 +7,7 @@ import {
 import {
     defaultTheme,
     defaultThemes,
-} from 'src/js/defaults';
+} from '/src/js/defaults';
 
 function writableLocalstorage(key, initialValue) {
     const store = writable(initialValue);

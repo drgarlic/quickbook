@@ -2,9 +2,9 @@
     import {
         showPanel,
         informations,
-    } from 'src/js/store';
+    } from '/src/js/store';
 
-    import Button from 'src/components/Button';
+    import Button from '/src/components/Button.svelte';
 </script>
 
 <div class="

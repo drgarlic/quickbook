@@ -9,28 +9,27 @@ const imagemin = require('gulp-imagemin');
 const inject = require('gulp-inject');
 const packageJson = require('./package.json');
 const postcss = require('gulp-postcss');
-const rename = require('gulp-rename');
-const replace = require('gulp-string-replace');
+// const replace = require('gulp-string-replace');
 const tailwindcss = require('tailwindcss');
 const webp = require('gulp-webp');
 
-const updateServiceWorker = () => {
-    const filesToPreCache = [
-        '/',
-        '/index.html',
-        '/tailwind.css',
-        '/tailwind-full.css',
-        ...fs.readdirSync('public/build')
-            .filter(e => ! e.endsWith('.map'))
-            .map(e => '/build/' + e),
-    ];
+// const updateServiceWorker = () => {
+//     const filesToPreCache = [
+//         '/',
+//         '/index.html',
+//         '/tailwind.css',
+//         '/tailwind-full.css',
+//         ...fs.readdirSync('public/build')
+//             .filter(e => ! e.endsWith('.map'))
+//             .map(e => '/build/' + e),
+//     ];
 
-    return gulp.src('public/service-worker.js')
-        .pipe(replace(/'cache-.*'/, `'cache-${packageJson.name}-${(+new Date).toString(36)}'`))
-        .pipe(replace(/filesToPreCache = \[(.*\n)*\]/, `filesToPreCache = [\n    '${filesToPreCache.join('\',\n    \'')}'\n]`))
-        .pipe(gulp.dest('public'));
-};
-exports.updateServiceWorker = updateServiceWorker;
+//     return gulp.src('public/service-worker.js')
+//         .pipe(replace(/'cache-.*'/, `'cache-${packageJson.name}-${(+new Date).toString(36)}'`))
+//         .pipe(replace(/filesToPreCache = \[(.*\n)*\]/, `filesToPreCache = [\n    '${filesToPreCache.join('\',\n    \'')}'\n]`))
+//         .pipe(gulp.dest('public'));
+// };
+// exports.updateServiceWorker = updateServiceWorker;
 
 const generateFavicons = () => {
     faviconsConfig.appName = packageJson.name;
@@ -49,37 +48,23 @@ exports.generateFavicons = generateFavicons;
 
 const clean = () => {
     return del([
-        'public/*.css',
-        'public/assets/**/*.webp',
-        'public/build/**',
+        'public/css/tailind*.css',
+        'public/**/*.webp',
     ]);
 };
 exports.clean = clean;
 
-const _tailwind = (name = 'tailwind', path) => {
+const tailwindFull = (name = 'tailwind', path) => {
     return gulp.src('node_modules/tailwindcss/tailwind.css')
         .pipe(postcss([
-            tailwindcss(path),
-            autoprefixer()
-        ]))
-        .pipe(rename(`${name}.css`))
-        .pipe(gulp.dest('public'));
-};
-
-const tailwind = () => _tailwind();
-exports.tailwind = tailwind;
-
-const tailwindFull = () => _tailwind('tailwind-full',  './gulp/tailwind/tailwind-full.config.js');
-exports.tailwindFull = tailwindFull;
-
-const optimizeCss = () => {
-    return gulp.src('public/*.css')
-        .pipe(postcss([
+            tailwindcss('./gulp/tailwind/tailwind-full.config.js'),
+            autoprefixer(),
             cssnano()
         ]))
-        .pipe(gulp.dest('public'));
+        .pipe(rename('tailwind-full.css'))
+        .pipe(gulp.dest('public/css'));
 };
-exports.optimizeCss = optimizeCss;
+exports.tailwindFull = tailwindFull;
 
 const generateWebps = () => {
     return gulp.src('public/assets/**/*')
@@ -91,14 +76,14 @@ const generateWebps = () => {
 exports.generateWebps = generateWebps;
 
 const injectFavicons = () => {
-    return gulp.src('public/index.html')
+    return gulp.src('./index.html')
         .pipe(inject(gulp.src([`public${faviconsConfig.path}${faviconsConfig.html}`]), {
             starttag: '<!-- inject:favicons -->',
             transform: (filepath, file) => {
                 return file.contents.toString();
             }
         }))
-        .pipe(gulp.dest('public'));
+        .pipe(gulp.dest('./'));
 };
 exports.injectFavicons = injectFavicons;
 
@@ -111,20 +96,17 @@ exports.optimizeImages = optimizeImages;
 
 const dev = gulp.series(
     clean,
-    tailwind,
     generateWebps,
 );
 exports.dev = dev;
 
 const prod = gulp.series(
-    tailwind,
     tailwindFull,
-    optimizeCss,
     generateWebps,
     generateFavicons,
     injectFavicons,
     optimizeImages,
-    updateServiceWorker,
+    // updateServiceWorker,
 );
 exports.prod = prod;
 

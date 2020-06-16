@@ -1,8 +1,5 @@
 import DOMPurify from 'dompurify';
-import {
-    cleanUrl,
-    escape
-} from 'marked/src/helpers';
+import helpers from 'marked/src/helpers';
 
 import {
     getClasses,
@@ -53,9 +50,9 @@ export const renderer = {
             + ` class="marked ${getClasses('pre')}"`
         + `><code`
             + ` style="${getStyles('code')}"`
-            + ` class="${getClasses('code')} ${lang ? (this.options.langPrefix + escape(lang, true)) : 'plaintext'}"`
+            + ` class="${getClasses('code')} ${lang ? (this.options.langPrefix + helpers.escape(lang, true)) : 'plaintext'}"`
         + `>`
-            + (escaped ? code : escape(code, true))
+            + (escaped ? code : helpers.escape(code, true))
         + `</code></pre>\n`;
     },
 
@@ -107,7 +104,7 @@ export const renderer = {
     },
 
     image(href, title, text) {
-        href = cleanUrl(this.options.sanitize, this.options.baseUrl, href);
+        href = helpers.cleanUrl(this.options.sanitize, this.options.baseUrl, href);
         if (href === null) {
             return text;
         }
@@ -122,7 +119,7 @@ export const renderer = {
     },
 
     link(href, title, text) {
-        href = cleanUrl(this.options.sanitize, this.options.baseUrl, href);
+        href = helpers.cleanUrl(this.options.sanitize, this.options.baseUrl, href);
         if (href === null) {
             return text;
         }

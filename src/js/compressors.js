@@ -1,16 +1,18 @@
-import pako from 'pako';
+import { deflate } from '@intrnl/pako-esm/deflate';
+import { inflate } from '@intrnl/pako-esm/inflate';
+
 import {
     encode,
     decode,
 } from 'url-safe-base64';
 
-export const compressToArray = str => pako.deflate(str);
+export const compressToArray = str => deflate(str);
 
 export const compressToString = (str) => {
     try {
         return encode(
             window.btoa(
-                pako.deflate(
+                deflate(
                     str,
                     {
                         to: 'string'
@@ -23,11 +25,11 @@ export const compressToString = (str) => {
     }
 };
 
-export const decompressFromArray = zip => pako.inflate(zip, { to: 'string' });
+export const decompressFromArray = zip => inflate(zip, { to: 'string' });
 
 export const decompressFromString = (zip) => {
     try {
-        return pako.inflate(
+        return inflate(
             window.atob(
                 decode(
                     zip

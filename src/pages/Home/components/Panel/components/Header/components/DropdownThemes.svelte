@@ -1,18 +1,18 @@
 <script>
-    import { defaultThemes } from 'src/js/defaults';
-    import { spreadAll } from 'src/js/pages';
+    import { defaultThemes } from '/src/js/defaults';
+    import { spreadAll } from '/src/js/pages';
     import {
         modal,
         themes,
-    } from 'src/js/store';
+    } from '/src/js/store';
     import {
         changeTheme,
         createTheme,
-    } from 'src/js/themes';
+    } from '/src/js/themes';
 
-    import Button from 'src/components/Button';
-    import Dropdown from 'src/components/Dropdown';
-    import DropdownItem from 'src/components/DropdownItem';
+    import Button from '/src/components/Button.svelte';
+    import Dropdown from '/src/components/Dropdown.svelte';
+    import DropdownItem from '/src/components/DropdownItem.svelte';
 
     let toggle = false;
 
@@ -21,7 +21,7 @@
     $: if (toggle && ! imported) {
         document.getElementsByTagName("head")[0].insertAdjacentHTML(
             'beforeend',
-            '<link rel="stylesheet" type="text/css" href="/tailwind-full.css">'
+            '<link rel="stylesheet" type="text/css" href="/css/tailwind-full.css">'
         );
         imported = true;
     }
@@ -32,7 +32,7 @@
     };
 
     const handleNewTheme = () => {
-        const name = createTheme();
+        createTheme();
         spreadAll();
         $modal = 'theme';
     };

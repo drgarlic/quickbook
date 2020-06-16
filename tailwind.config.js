@@ -3,27 +3,26 @@ const tailwindUI = require('@tailwindcss/ui');
 
 module.exports = {
     purge: [
-        './public/index.html',
-        './src/**/*.html',
+        './index.html',
         './src/**/*.js',
         './src/**/*.svelte',
     ],
     theme: {
         extend: {
-            colors: {
-                coal: {
-                    '50': '#f9f9f9',
-                    '100': '#f7f7f7',
-                    '200': '#eaeaea',
-                    '300': '#dbdbdb',
-                    '400': '#b2b2b2',
-                    '500': '#7f7f7f',
-                    '600': '#636363',
-                    '700': '#515151',
-                    '800': '#3f3f3f',
-                    '900': '#2d2d2d',
-                }
-            },
+            // colors: {
+            //     coal: {
+            //         '50': '#f9f9f9',
+            //         '100': '#f7f7f7',
+            //         '200': '#eaeaea',
+            //         '300': '#dbdbdb',
+            //         '400': '#b2b2b2',
+            //         '500': '#7f7f7f',
+            //         '600': '#636363',
+            //         '700': '#515151',
+            //         '800': '#3f3f3f',
+            //         '900': '#2d2d2d',
+            //     }
+            // },
             fontFamily: {
                 sans: [
                     'Inter var',
@@ -53,15 +52,15 @@ module.exports = {
                 '1/2': '50%',
                 '3/4': '75%',
             },
-            screens: {
-                xs: '420px',
-                dark: {
-                    raw: '(prefers-color-scheme: dark)',
-                },
-                light: {
-                    raw: '(prefers-color-scheme: light)',
-                },
-            },
+            // screens: {
+            //     xs: '420px',
+            //     dark: {
+            //         raw: '(prefers-color-scheme: dark)',
+            //     },
+            //     light: {
+            //         raw: '(prefers-color-scheme: light)',
+            //     },
+            // },
             zIndex: {
                 '-10': '-10',
             }

@@ -1,24 +1,15 @@
 <script>
-    import { setText } from 'src/js/editor';
-    import { importData } from 'src/js/importer';
+    import { importFile } from '/src/js/importer';
 
-    import Button from 'src/components/Button';
+    import Button from '/src/components/Button.svelte';
 
     let input;
     let files;
 
-    const handleInput = async () => {
+    const handleInput = () => {
         const file = files[0];
-
         if (file) {
-            const extension = file.name.split('.').pop();
-            if (extension === 'md') {
-                setText(await file.text());
-            } else {
-                const buffer = await file.arrayBuffer();
-                const data = new Uint8Array(buffer);
-                setText(importData(data));
-            }
+            importFile(file);
         }
     };
 </script>

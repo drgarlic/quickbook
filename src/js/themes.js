@@ -1,4 +1,3 @@
-import hljs from 'highlight.js';
 import { get } from 'svelte/store';
 
 import { defaultThemes } from './defaults';
@@ -9,19 +8,19 @@ import {
 } from './store';
 
 const dictionnary = {
-    input: `checkbox`,
-    code: `codespan`,
-    img: `image`,
-    a: `link`,
-    p: `paragraph`,
+    input: 'checkbox',
+    code: 'codespan',
+    img: 'image',
+    a: 'link',
+    p: 'paragraph',
 };
 
 const dictionnaryOtherWay = {
-    checkbox: `input`,
-    codespan: `code`,
-    image: `img`,
-    link: `a`,
-    paragraph: `p`,
+    checkbox: 'input',
+    codespan: 'code',
+    image: 'img',
+    link: 'a',
+    paragraph: 'p',
 };
 
 const list = [
@@ -50,25 +49,27 @@ const addClasses = (element, value) => { value && element.classList.add(...toArr
 const removeClasses = (element, value) => { value && element.classList.remove(...toArray(value)); };
 
 export const changeTheme = (theme) => {
-    const oldTheme = get(storedTheme);
-
-    storedTheme.set(theme);
-
     const changeClasses = (el, type) => {
         removeClasses(el, getClasses(type, oldTheme));
         addClasses(el, getClasses(type));
     };
 
-    list.forEach((type) => {
-        get(pages).querySelectorAll(`${type}.marked`).forEach((element) => {
-            changeClasses(element, dictionnary[type] || type);
-            element.setAttribute('style', getStyles(dictionnary[type] || type));
-            if (type === 'pre') {
-                changeClasses(element.firstElementChild, 'code');
-                element.firstElementChild.setAttribute('style', getStyles('code'));
-            }
+    const oldTheme = get(storedTheme);
+
+    if (get(storedThemes)[theme]) {
+        storedTheme.set(theme);
+
+        list.forEach((type) => {
+            get(pages).querySelectorAll(`${type}.marked`).forEach((element) => {
+                changeClasses(element, dictionnary[type] || type);
+                element.setAttribute('style', getStyles(dictionnary[type] || type));
+                if (type === 'pre') {
+                    changeClasses(element.firstElementChild, 'code');
+                    element.firstElementChild.setAttribute('style', getStyles('code'));
+                }
+            });
         });
-    });
+    }
 };
 
 export const updateType = (inputValue, elementType, type) => {
@@ -116,21 +117,22 @@ export const initializeThemes = () => {
     }
 };
 
-export const createTheme = () => {
+export const createTheme = (basename = 'new', value = { classes: {}, styles: {} }) => {
     const themes = get(storedThemes);
 
-    let name = 'new';
+    let name = basename;
     let i = 2;
     while (name in themes) {
-        name = `new ${i}`;
+        name = `${basename} ${i}`;
         i++;
     }
 
-    const initValue = { classes: {}, styles: {} }
-    themes[name] = initValue;
+    themes[name] = value;
     const json = JSON.parse(localStorage.themes || "{}");
-    json[name] = initValue;
+    json[name] = value;
     localStorage.themes = JSON.stringify(json);
+
+    storedThemes.set(get(storedThemes));
 
     changeTheme(name);
 
@@ -162,3 +164,9 @@ export const renameTheme = (name) => {
 
     storedThemes.set(themes);
 };
+
+export const getCurrentTheme = () => {
+    return get(storedThemes)[get(storedTheme)];
+};
+
+export const getThemes = () => get(storedThemes);

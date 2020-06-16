@@ -1,82 +1,17 @@
 <script>
     import {
-        compressToArray,
-        compressToString,
-    } from 'src/js/compressors';
-    import { getText } from 'src/js/editor';
-    import { getUsedImages } from 'src/js/images';
-    import { pages } from 'src/js/store';
+        downloadHTML,
+        downloadMarkdown,
+        downloadQuickbook,
+    } from '/src/js/exporter';
 
-    import Button from 'src/components/Button';
-    import Dropdown from 'src/components/Dropdown';
-    import DropdownItem from 'src/components/DropdownItem';
-    import Modal from 'src/components/Modal';
+    import Button from '/src/components/Button.svelte';
+    import Dropdown from '/src/components/Dropdown.svelte';
+    import DropdownItem from '/src/components/DropdownItem.svelte';
+    import Modal from '/src/components/Modal.svelte';
 
     let toggle = false;
     let toggleModal = false;
-
-    const getData = () => {
-        return {
-            text: getText(),
-            images: getUsedImages(getText())
-        }
-    };
-
-    const download = (blob, name) => {
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = name;
-        link.click();
-        toggle = false;
-    };
-
-    const downloadMarkdown = async () => {
-        const blob = new Blob(
-            [ getText() ],
-            { type: 'text/plain' }
-        );
-        download(blob, 'quickbook.md');
-    };
-
-    const downloadHTML = async () => {
-        const blob = new Blob(
-            [ $pages.innerHTML ],
-            { type: 'text/plain' }
-        );
-        download(blob, 'quickbook.html');
-    };
-
-    const downloadQuickbook = async () => {
-        const compressed = compressToArray(JSON.stringify(getData()));
-
-        const blob = new Blob(
-            [ compressed ],
-            { type: 'octet/stream' }
-        );
-        download(blob, 'quickbook.qb');
-    };
-
-    // const downloadPDF = async () => {
-    //     const body = compressToString(JSON.stringify(getData()));
-
-    //     const res = await fetch(
-    //         `${window.location.origin}/api/pdf`,
-    //         {
-    //             method: 'POST',
-    //             headers: { 'Accept': 'application/pdf' },
-    //             body,
-    //         }
-    //     );
-
-    //     const data = await res.arrayBuffer();
-
-    //     const blob = new Blob(
-    //         [ data ],
-    //         { type: 'application/pdf' }
-    //     );
-
-    //     download(blob, 'quickbook.pdf');
-    // }
 </script>
 
 <Dropdown
@@ -179,13 +114,13 @@
                 space-y-2
             ">
                 <p>
-                    The servers for the PDF generation are being developped as we speak.
+                    A solution to generate the PDF for you is being developped as we speak.
                 </p>
                 <p>
-                    That is why, for now, only <strong>Chrome (and Chrome based)</strong> users can export to PDFs.
+                    For now, only <strong>Chrome (and Chrome based)</strong> users can export to PDFs. (If you have one on your device but aren't using it now, you can use the "Export to Quickbook" functionnality and import it back there).
                 </p>
                 <p>
-                    It is possible thanks to the <strong>Print</strong> functionnality of the browser. All you have to do is remember to set <strong>Margins</strong> to <strong>None</strong>, <strong>enable</strong> the <strong>Background graphics</strong> option, and finally <strong>save as PDF</strong>.
+                    Now, all you have to do is remember to set <strong>Margins</strong> to <strong>None</strong>, <strong>enable</strong> the <strong>Background graphics</strong> option, and finally <strong>save as PDF</strong>.
                 </p>
             </div>
         </div>

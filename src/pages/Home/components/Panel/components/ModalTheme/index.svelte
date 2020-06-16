@@ -1,20 +1,20 @@
 <script>
-    import { defaultThemes } from 'src/js/defaults';
-    import { spreadAll } from 'src/js/pages';
+    import { defaultThemes } from '/src/js/defaults';
+    import { spreadAll } from '/src/js/pages';
     import {
         modal,
         theme,
-    } from 'src/js/store';
+    } from '/src/js/store';
     import {
         deleteTheme,
         renameTheme,
-    } from 'src/js/themes';
+    } from '/src/js/themes';
 
-    import Button from 'src/components/Button';
-    import Input from 'src/components/Input';
-    import Link from 'src/components/Link';
-    import Modal from 'src/components/Modal';
-    import Tuple from './components/Tuple';
+    import Button from '/src/components/Button.svelte';
+    import Input from '/src/components/Input.svelte';
+    import Link from '/src/components/Link.svelte';
+    import Modal from '/src/components/Modal.svelte';
+    import Tuple from './components/Tuple.svelte';
 
     export let toggle;
 
