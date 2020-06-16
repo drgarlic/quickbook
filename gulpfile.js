@@ -9,6 +9,7 @@ const imagemin = require('gulp-imagemin');
 const inject = require('gulp-inject');
 const packageJson = require('./package.json');
 const postcss = require('gulp-postcss');
+const rename = require('gulp-rename');
 // const replace = require('gulp-string-replace');
 const tailwindcss = require('tailwindcss');
 const webp = require('gulp-webp');
