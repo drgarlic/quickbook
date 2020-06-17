@@ -31,7 +31,6 @@
         <Button
             on:click={() => { location.reload() }}
             secondary
-            light
             label="Reloads the page"
         >
             Refresh

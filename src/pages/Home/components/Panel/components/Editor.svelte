@@ -34,9 +34,11 @@
             h-full
             w-full
             font-mono
+            text-gray-700
             subpixel-antialiased
             leading-relaxed
             text-base
+            font-medium
             xl:text-sm
         "/>
     </div>

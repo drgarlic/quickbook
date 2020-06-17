@@ -21,6 +21,7 @@ let config = {
             'prismjs/plugins/autoloader/prism-autoloader',
             'svelte/internal',
             'svelte/store',
+            'svelte-spa-chunk/src/index'
         ]
     },
 };

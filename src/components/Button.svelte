@@ -17,9 +17,6 @@
     export let danger = false;
     $: primary = ! secondary && ! tertiary && ! danger;
 
-    export let animate = undefined;
-    $: _animate = animate !== undefined ? animate : (primary || secondary);
-
     export let customPadding = '';
 
     const dispatch = createEventDispatcher();
@@ -53,19 +50,12 @@
         }
         if (secondary) {
             colors = `
-                text-gray-400
+                text-gray-700
                 bg-white
+                border-gray-300
                 hover:text-gray-500
                 ${active ? 'text-gray-500' : ''}
             `;
-            // if (! light) {
-            //     colors += `
-            //         dark:text-gray-500
-            //         dark:hover:text-gray-400
-            //         dark:bg-gray-900
-            //         dark:hover:bg-gray-800
-            //     `;
-            // }
         } else if (tertiary) {
             colors = `
                 text-gray-400
@@ -104,8 +94,8 @@
         duration-150
         ease-in-out
         focus:outline-none
-        ${_animate ? 'group-hover:shadow-xs' : ''}
-        ${active ? 'shadow-xs' : ''}
+        ${tertiary ? 'group-hover:shadow-xs' : ''}
+        ${tertiary && active ? 'shadow-xs' : ''}
     `;
 </script>
 
@@ -114,8 +104,8 @@
     rounded-md
     transform
     duration-150
-    {_animate ? animation : ''}
     {active ? activated : ''}
+    {animation}
     {_class}
 ">
     {#if href}

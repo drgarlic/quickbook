@@ -82,7 +82,6 @@
         <Button
             on:click={() => { $showPanel = true }}
             secondary
-            animate
             label="Show panel"
             customPadding="p-2"
         >

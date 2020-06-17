@@ -651,15 +651,15 @@
   resolved "https://registry.yarnpkg.com/@vercel/go/-/go-1.1.2.tgz#0b0067a56616e4c56eeac8a8b33a9bb64a79be71"
   integrity sha512-1k7w6gY2Uj4DVqvvqm5VXZZeCqmzV5Fw3T3hjfgt13WVXPVwYfXf50ya4VvwpF9/IEvXpAhXLRcHD7ZTCMoXKA==
 
-"@vercel/next@2.6.6":
-  version "2.6.6"
-  resolved "https://registry.yarnpkg.com/@vercel/next/-/next-2.6.6.tgz#ec8a4fd8b8b058940010e491de2c41bb25fe1159"
-  integrity sha512-1Zx3PqDznaoCtFLd3DfDQ5nBkyr/8UbyUtrDR5aj7TXCi1BQ9jBzO9NGzpRmxZRNkVX4BFQTX2ESEBz8rKbLHw==
+"@vercel/next@2.6.7":
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/@vercel/next/-/next-2.6.7.tgz#e522ab1e4c2af83b51df430dec1f98f64d7d202e"
+  integrity sha512-zzcalT/TRpI7EH4glRqhD09jkeGqbjZ4JbiOkCdwTAMJDme8bf6wsYffBGu92DLv/2zDFPLj0EcNsGVhb7bk0w==
 
-"@vercel/node@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-1.7.0.tgz#f90412a05463edc29d34ab6a56abd02867181d66"
-  integrity sha512-UaG86cstaCEaNd8N1BAelysofzxi6Grhpg4Tq6UmYJuz7CqmRwsVhsqkK0u0dXFvH1uHjRUGSEwjndpKiAFfFg==
+"@vercel/node@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-1.7.1.tgz#cdf9b2226cbc469228aae6369b2b21db4c83dc69"
+  integrity sha512-Lp6l3526xQ/srCqkXE9/E+gykAcpM/vut4zFo5NA9+syGxZt1nlVAznhNVkgsSW4mbRIE67KIfi7SII55dW7uw==
   dependencies:
     "@types/node" "*"
     ts-node "8.9.1"
@@ -675,10 +675,10 @@
   resolved "https://registry.yarnpkg.com/@vercel/ruby/-/ruby-1.2.2.tgz#0a6ef704d9eec7a88d3bf12f462cd52046b75361"
   integrity sha512-5kKFNS84EvjHRI/umZqL31KdyvoWO05qbIeR3YHHJBCPSBIUlGimM0Wx7OsdAK+TMDzpWszBF/6bgk//KpmYbg==
 
-"@vercel/static-build@0.17.2":
-  version "0.17.2"
-  resolved "https://registry.yarnpkg.com/@vercel/static-build/-/static-build-0.17.2.tgz#fa9963e951cada1059918837e7ca223bd31f58d8"
-  integrity sha512-jK7WUvZIaYqJJffQ1z7Q2wSbAWJhAv8SluMyLfGMox5hBIso/QOPd2Tnh5xnMGbib6U/4noEG3ekHr81l3Yo3w==
+"@vercel/static-build@0.17.3":
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/@vercel/static-build/-/static-build-0.17.3.tgz#43ce2f605df946c11b697b5bf1b8f91cdc148cf6"
+  integrity sha512-Xf4b6AEVl5EnTSecG0p9hwi3F4MuvwsYyGmvhbNfoV5c8T4Q9gPgTY0f738OAUv1f81DdzRXcgijK4rFQ1ysTQ==
 
 "@vue/compiler-core@3.0.0-beta.15":
   version "3.0.0-beta.15"
@@ -3550,6 +3550,11 @@ gulp-postcss@^8.0.0:
     postcss "^7.0.2"
     postcss-load-config "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.1"
+
+gulp-rename@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-2.0.0.tgz#9bbc3962b0c0f52fc67cd5eaff6c223ec5b9cf6c"
+  integrity sha512-97Vba4KBzbYmR5VBs9mWmK+HwIf5mj+/zioxfZhOKeXtx5ZjBk57KFlePf5nxq9QsTtFl0ejnHE3zTC9MHXqyQ==
 
 gulp-string-replace@^1.1.2:
   version "1.1.2"
@@ -7505,10 +7510,10 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-svelte-class-transition@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/svelte-class-transition/-/svelte-class-transition-1.0.1.tgz#8ab7c82726c4477ddeb2c8bd81b29aaa08b84ec8"
-  integrity sha512-536qw/OPxFrSJOcNMCC8kNY8yAOeRxB/QtGuPGXiLxk0EFN3PoYznVUzDP92kkxrr+LAMrKoNvg943KbWoQ08g==
+svelte-class-transition@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/svelte-class-transition/-/svelte-class-transition-1.0.2.tgz#c6801e3f5188ac116423bbdf46e56be2d3f2b4c8"
+  integrity sha512-d7J5sT5E43+I3lo0Nheu4h1Rp1JUmbArZNKowZtoh4gnDF1Ei+LVniBHLsAE26y9voc4MsJ11kgDKNLsH3F1MA==
 
 svelte-loadable@^1.4.0:
   version "1.5.0"
@@ -8132,18 +8137,18 @@ vendors@^1.0.0:
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.4.tgz#e2b800a53e7a29b93506c3cf41100d16c4c4ad8e"
   integrity sha512-/juG65kTL4Cy2su4P8HjtkTxk6VmJDiOPBufWniqQ6wknac6jNiXS9vU+hO3wgusiyqWlzTbVHi0dyJqRONg3w==
 
-vercel@^19.1.0:
-  version "19.1.0"
-  resolved "https://registry.yarnpkg.com/vercel/-/vercel-19.1.0.tgz#63db7e1d6b5c994ff0a35c8ce69bf4fe33115029"
-  integrity sha512-DWb7MfysrkiWQAar85fjcLUmOj9N7WjH93mwZw1SX1wDiVLkvcm/5of+DYCOfmJkt2YJoNiglx2JpLW8EDsDSQ==
+vercel@^19.1.1:
+  version "19.1.1"
+  resolved "https://registry.yarnpkg.com/vercel/-/vercel-19.1.1.tgz#2034911bff81f4d055f5deb9995db1f93552529b"
+  integrity sha512-cFKkzkkypdNcO1OQnjVCGSS/lFQQAmWNDIutdi2RYqMW0Pdp/u6XeZPADvDbqVwKi56QthoZybCCdolzNZxHVw==
   dependencies:
     "@vercel/build-utils" "2.4.0"
     "@vercel/go" "1.1.2"
-    "@vercel/next" "2.6.6"
-    "@vercel/node" "1.7.0"
+    "@vercel/next" "2.6.7"
+    "@vercel/node" "1.7.1"
     "@vercel/python" "1.2.2"
     "@vercel/ruby" "1.2.2"
-    "@vercel/static-build" "0.17.2"
+    "@vercel/static-build" "0.17.3"
 
 verror@1.10.0:
   version "1.10.0"

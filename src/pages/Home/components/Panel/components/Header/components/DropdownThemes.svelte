@@ -19,7 +19,7 @@
     let imported = false;
 
     $: if (toggle && ! imported) {
-        document.getElementsByTagName("head")[0].insertAdjacentHTML(
+        document.getElementsByTagName('head')[0].insertAdjacentHTML(
             'beforeend',
             '<link rel="stylesheet" type="text/css" href="/css/tailwind-full.css">'
         );

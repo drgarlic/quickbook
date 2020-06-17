@@ -59,16 +59,18 @@ export const changeTheme = (theme) => {
     if (get(storedThemes)[theme]) {
         storedTheme.set(theme);
 
-        list.forEach((type) => {
-            get(pages).querySelectorAll(`${type}.marked`).forEach((element) => {
-                changeClasses(element, dictionnary[type] || type);
-                element.setAttribute('style', getStyles(dictionnary[type] || type));
-                if (type === 'pre') {
-                    changeClasses(element.firstElementChild, 'code');
-                    element.firstElementChild.setAttribute('style', getStyles('code'));
-                }
+        if (get(pages)) {
+            list.forEach((type) => {
+                get(pages).querySelectorAll(`${type}.marked`).forEach((element) => {
+                    changeClasses(element, dictionnary[type] || type);
+                    element.setAttribute('style', getStyles(dictionnary[type] || type));
+                    if (type === 'pre') {
+                        changeClasses(element.firstElementChild, 'code');
+                        element.firstElementChild.setAttribute('style', getStyles('code'));
+                    }
+                });
             });
-        });
+        }
     }
 };
 

@@ -26,7 +26,6 @@
             href="https://github.com/gawlk/quickbook"
             blank
             tertiary
-            animate
             label="Github"
             customPadding="p-2"
         >
@@ -38,7 +37,6 @@
             href="https://docs.google.com/forms/d/e/1FAIpQLSfK8Nyl5YqrFe-fpioeEX6Hq_GPasoV7yUmlsimAjzI4l8tRA/viewform"
             blank
             tertiary
-            animate
             label="Feedback"
             customPadding="p-2"
         >
@@ -97,7 +95,6 @@
         <Button
             on:click={() => { $showPanel = false }}
             tertiary
-            animate
             label="Hide panel"
             customPadding="p-2"
             class="

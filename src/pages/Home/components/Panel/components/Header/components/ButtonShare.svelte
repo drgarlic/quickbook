@@ -33,7 +33,6 @@
 <Button
     on:click={generateShareLink}
     tertiary
-    animate
     label="Share"
     customPadding="p-2"
 >

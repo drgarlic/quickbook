@@ -1,16 +1,18 @@
 const css = `
 .ace_heading,
 .ace_strong {
-    font-weight: bold;
+    font-weight: 700;
     opacity: 0.8;
 }
 
 .ace_blockquote {
+    // font-weight: 500;
     font-style: italic;
 }
 
 .ace_comment,
 .ace_emphasis {
+    // font-weight: 500;
     font-style: italic;
     opacity: 0.8;
 }
@@ -21,11 +23,13 @@ const css = `
 .ace_constant,
 .ace_function,
 .ace_url {
+    // font-weight: 500;
     opacity: 0.6;
 }
 
 .ace_variable,
 .ace_string {
+    // font-weight: 500;
     opacity: 0.8;
 }
 

@@ -17,7 +17,6 @@
 <Button
     on:click={() => { input.click() }}
     tertiary
-    animate
     label="Import"
     customPadding="p-2"
 >

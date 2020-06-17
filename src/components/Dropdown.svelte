@@ -57,7 +57,6 @@
             on:click={() => { dispatch('update', { value: ! toggle }); }}
             active={toggle}
             tertiary
-            animate
             {label}
             customPadding="p-2"
         >

@@ -49,7 +49,8 @@ exports.generateFavicons = generateFavicons;
 
 const clean = () => {
     return del([
-        'public/css/tailind*.css',
+        'dist',
+        'public/css/tailwind*.css',
         'public/**/*.webp',
     ]);
 };

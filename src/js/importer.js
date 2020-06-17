@@ -21,6 +21,8 @@ export const importData = (data) => {
         data = typeof data === 'string' ? decompressFromString(data) : decompressFromArray(data);
 
         if (data) {
+            console.log(data);
+
             const json = JSON.parse(data);
 
             text = json.text || text;

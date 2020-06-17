@@ -35,6 +35,7 @@ export const defaultThemes = {
                 rounded
                 bg-gray-50
                 text-sm-em
+                font-medium
                 break-words
                 whitespace-pre-wrap
                 subpixel-antialiased
@@ -218,6 +219,7 @@ export const defaultThemes = {
                 rounded
                 bg-gray-50
                 text-sm-em
+                font-medium
                 break-words
                 whitespace-pre-wrap
                 subpixel-antialiased
@@ -410,6 +412,7 @@ export const defaultThemes = {
                 rounded
                 bg-gray-50
                 text-sm-em
+                font-medium
                 break-words
                 whitespace-pre-wrap
                 subpixel-antialiased

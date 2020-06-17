@@ -15,11 +15,15 @@ const getData = () => {
     }
 };
 
-const download = (blob, name) => {
+const download = (href, name) => {
     const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
+    link.href = href;
     link.download = name;
     link.click();
+};
+
+const downloadBlob = (blob, name) => {
+    download(window.URL.createObjectURL(blob), name);
 };
 
 export const downloadMarkdown = async () => {
@@ -27,7 +31,7 @@ export const downloadMarkdown = async () => {
         [ getText() ],
         { type: 'text/plain' }
     );
-    download(blob, 'quickbook.md');
+    downloadBlob(blob, 'quickbook.md');
 };
 
 export const downloadHTML = async () => {
@@ -35,7 +39,28 @@ export const downloadHTML = async () => {
         [ get(pages).innerHTML ],
         { type: 'text/plain' }
     );
-    download(blob, 'quickbook.html');
+    downloadBlob(blob, 'quickbook.html');
+};
+
+export const downloadPDF = async () => {
+    const body = compressToString(JSON.stringify(getData()));
+
+    console.log(body);
+
+    const res = await fetch(
+        'https://aws.quickbook.io/pdf',
+        {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/pdf',
+            },
+            body,
+        }
+    );
+
+    const blob = await res.blob();
+
+    downloadBlob(blob, 'quickbook.pdf');
 };
 
 export const downloadQuickbook = async () => {
@@ -45,27 +70,6 @@ export const downloadQuickbook = async () => {
         [ compressed ],
         { type: 'octet/stream' }
     );
-    download(blob, 'quickbook.qb');
+
+    downloadBlob(blob, 'quickbook.qb');
 };
-
-// const downloadPDF = async () => {
-//     const body = compressToString(JSON.stringify(getData()));
-
-//     const res = await fetch(
-//         `${window.location.origin}/api/pdf`,
-//         {
-//             method: 'POST',
-//             headers: { 'Accept': 'application/pdf' },
-//             body,
-//         }
-//     );
-
-//     const data = await res.arrayBuffer();
-
-//     const blob = new Blob(
-//         [ data ],
-//         { type: 'application/pdf' }
-//     );
-
-//     download(blob, 'quickbook.pdf');
-// }
