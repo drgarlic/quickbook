@@ -1,7 +1,7 @@
-<div style="text-align: center">
-    <img src="https://github.com/quickbookio/brand/blob/master/png/quickbook-full.png" />
-    <h3 style="color: gray">The quickest way to write a book/PDF using Markdown.</h3>
-</div>
+<p align="center">
+  <img src="https://github.com/quickbookio/brand/blob/master/png/quickbook-full.png" />
+</p>
+<h3 align="center">The quickest way to write a book/PDF using Markdown.</h3>
 
 ## Why ?
 
