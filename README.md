@@ -52,3 +52,5 @@ So here's Quickbook. What I believe is the simplest but fully capable book maker
 - An improved mobile version
 - Drag and drop
 - Scroll sync
+- Headers and footers for pages
+- An automatic table of contents
