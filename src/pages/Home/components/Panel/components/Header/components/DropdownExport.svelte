@@ -10,9 +10,35 @@
     import Dropdown from '/src/components/Dropdown.svelte';
     import DropdownItem from '/src/components/DropdownItem.svelte';
     import Modal from '/src/components/Modal.svelte';
+    import Notification from '/src/components/Notification.svelte';
 
     let toggle = false;
     let toggleModal = false;
+    let toggleNotification = false;
+    let disabled = false;
+    let error = false;
+
+    const handleClose = () => {
+        toggleModal = false;
+        toggleNotification = false;
+        disabled = false;
+        error = false;
+    }
+
+    const handlePDF = async () => {
+        toggleNotification = true;
+        disabled = true;
+        error = false;
+
+        try {
+            await downloadPDF();
+            toggleNotification = false;
+        } catch (e) {
+            error = true;
+        }
+
+        disabled = false;
+    };
 </script>
 
 <Dropdown
@@ -118,10 +144,10 @@
                     There are two ways for you to export to PDF. You can eiter use the Print functionnality of the browser or we can generate it for you.
                 </p>
                 <p>
-                    The first one is <strong>strongly suggested</strong> but only available for <strong>Chrome (and Chrome based)</strong> users*. It's <strong>faster</strong>, <strong>truer</strong> and <strong>free for us</strong>, please considere it. You just need to remember to set <strong>Margins</strong> to <strong>None</strong>, <strong>Enable</strong> the <strong>Background graphics</strong> option, and finally <strong>Save as PDF</strong>.
+                    The first one is <strong>strongly suggested</strong> but only available for <strong>Chrome (and Chrome based)</strong> users*. It's <strong>faster</strong> and <strong>truer</strong>. You just need to remember to set <strong>Margins</strong> to <strong>None</strong>, <strong>Enable</strong> the <strong>Background graphics</strong> option, and finally <strong>Save as PDF</strong>.
                 </p>
                 <p>
-                    The second one takes <strong>more time</strong> and some emojis might be <strong>missing</strong>. It also costs us money. You should note that if the Quickbook is too big, it <strong>might fail</strong>.
+                    The second one takes <strong>more time</strong> and some emojis might be <strong>missing</strong>. It also <strong>costs me money</strong>. You should note that if the Quickbook is too big, it <strong>might fail</strong>.
                 </p>
                 <p class="pt-2">
                     <em>*If you have one on your device but aren't using it now, you can also "Export to Quickbook" and import it back there.</em>
@@ -137,21 +163,24 @@
             sm:grid-flow-row-dense
         ">
             <Button
-                on:click={() => { toggleModal = false; }}
+                on:click={handleClose}
                 tertiary
+                {disabled}
                 label="Cancel"
             >
                 Cancel
             </Button>
             <Button
-                on:click={() => { downloadPDF() }}
+                on:click={handlePDF}
                 secondary
+                {disabled}
                 label="Generate PDF"
             >
                 Generate PDF
             </Button>
             <Button
-                on:click={() => { window.print(); }}
+                on:click={() => { window.print() }}
+                {disabled}
                 label="Save as PDF"
             >
                 Save as PDF
@@ -159,3 +188,21 @@
         </div>
     </div>
 </Modal>
+
+<Notification
+    toggle={toggleNotification}
+    on:close={() => { toggleNotification = false }}
+    title={error ? 'An error has occured !' : 'Generating the PDF...'}
+    description={error ? 'Sorry, the server returned an error. It either took too long or something went wrong. Please try the other method.' : 'Please wait and don\'t close the tab. We\'ll keep you updated !'}
+>
+    {#if error}
+        <svg class="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2" stroke="currentColor">
+              <path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+    {:else}
+        <svg class="text-gray-400" height="20" width="20" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"/>
+            <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"/>
+        </svg>
+    {/if}
+</Notification>

@@ -12,7 +12,7 @@
 <div class="
     fixed
     inset-0
-    z-40
+    z-50
     flex
     items-end
     justify-center

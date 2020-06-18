@@ -11,6 +11,7 @@
 
     export let big = false;
     export let active = false;
+    export let disabled = false;
 
     export let secondary = false;
     export let tertiary = false;
@@ -95,7 +96,8 @@
         ease-in-out
         focus:outline-none
         ${tertiary ? 'group-hover:shadow-xs' : ''}
-        ${tertiary && active ? 'shadow-xs' : ''}
+        ${(tertiary && active) ? 'shadow-xs' : ''}
+        ${disabled ? 'cursor-wait' : ''}
     `;
 </script>
 
@@ -105,7 +107,7 @@
     transform
     duration-150
     {active ? activated : ''}
-    {animation}
+    {disabled ? 'opacity-50' : animation}
     {_class}
 ">
     {#if href}
@@ -115,6 +117,7 @@
             href={href.startsWith('http') ? href : '#' + href}
             rel={blank === true ? 'noopener noreferrer' : ''}
             target={blank === true ? '_blank' : ''}
+            {disabled}
             class="
             {classes}
         ">
@@ -127,6 +130,7 @@
             aria-label={label}
             title={label}
             {type}
+            {disabled}
             class="
             {classes}
         ">
@@ -140,6 +144,7 @@
             aria-label={label}
             title={label}
             type="button"
+            {disabled}
             class="
             {classes}
         ">

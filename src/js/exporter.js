@@ -1,3 +1,5 @@
+import { get } from 'svelte/store';
+
 import {
     compressToArray,
     compressToString,
@@ -12,7 +14,7 @@ const getData = () => {
         text: getText(),
         images: getUsedImages(getText()),
         theme: getCurrentTheme(),
-    }
+    };
 };
 
 const download = (href, name) => {
@@ -44,8 +46,6 @@ export const downloadHTML = async () => {
 
 export const downloadPDF = async () => {
     const body = compressToString(JSON.stringify(getData()));
-
-    console.log(body);
 
     const res = await fetch(
         'https://aws.quickbook.io/pdf',

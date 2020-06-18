@@ -1,5 +1,5 @@
 {
-  "name": "quickbook",
+  "name": "quickbook-app",
   "version": "0.1.0",
   "description": "The quickest way to write a book/PDF using Markdown",
   "homepage": "https://quickbook.io",
@@ -12,7 +12,7 @@
   "main": "src/main.js",
   "license": "MIT",
   "dependencies": {
-    "@intrnl/pako-esm": "^0.1.0",
+    "@intrnl/pako-esm": "^0.1.1",
     "ace-builds": "^1.4.11",
     "ackee-tracker": "^3.3.0",
     "compressorjs": "^1.0.6",
@@ -24,7 +24,7 @@
     "micro-dash": "^7.3.0",
     "prismjs": "^1.20.0",
     "svelte": "^3.23.2",
-    "svelte-class-transition": "^1.0.2",
+    "svelte-class-transition": "^1.0.3",
     "svelte-spa-chunk": "^2.0.0",
     "svelte-spa-router": "^2.2.0",
     "tslib": "^2.0.0",
@@ -33,7 +33,6 @@
   "devDependencies": {
     "@tailwindcss/ui": "^0.3.0",
     "autoprefixer": "^9.8.0",
-    "chrome-aws-lambda": "^3.1.1",
     "cssnano": "^4.1.10",
     "del": "^5.1.0",
     "favicons": "^6.1.0",
@@ -44,8 +43,7 @@
     "gulp-rename": "^2.0.0",
     "gulp-string-replace": "^1.1.2",
     "gulp-webp": "^4.0.1",
-    "puppeteer-core": "^4.0.0",
-    "sirv-cli": "^1.0.0",
+    "sirv-cli": "^1.0.1",
     "sitemap": "^6.1.5",
     "tailwindcss": "^1.4.6",
     "vercel": "^19.1.1",

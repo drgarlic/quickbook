@@ -8,11 +8,6 @@
     const routes = {
         '/:data?': Chunk(() => import('./pages/Home/index.svelte')),
     };
-
-    // import Home from './pages/Home/index.svelte';
-    // const routes = {
-    //     '/:data?': Home,
-    // };
 </script>
 
 <Router {routes} />
