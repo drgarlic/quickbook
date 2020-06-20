@@ -148,8 +148,8 @@
 >
     <div class="
         flex-none
-        border-b
-        border-gray-200
+        border-b-2
+        border-gray-100
         px-4
         py-5
         sm:px-6

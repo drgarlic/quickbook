@@ -5,7 +5,6 @@ let config = {
 	alias: {
 		'/src/': path.resolve(__dirname, './src'),
     },
-    serviceWorker: process.env.NODE_ENV,
     plugins: [
         svelte(),
     ],

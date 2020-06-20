@@ -69,7 +69,6 @@
                         class="
                         bg-white
                         rounded-lg
-                        shadow-xs
                         {full ? 'max-h-full flex flex-col' : ''}
                     ">
                         <slot>

@@ -16,8 +16,7 @@
     bg-gray-50
     flex-1
     p-4
-    rounded-md
-    shadow-inner
+    rounded-lg
     w-full
     sm:p-6
 ">
@@ -38,7 +37,6 @@
             subpixel-antialiased
             leading-relaxed
             text-base
-            font-medium
             xl:text-sm
         "/>
     </div>

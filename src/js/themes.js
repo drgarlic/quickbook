@@ -30,7 +30,7 @@ const list = [
 export const clean = str => str.replace(/\s+/g, ' ').trim();
 
 export const getPre = (element, type) => {
-    return type === 'classes' && element === 'page' ? 'first:mt-4 mx-4 mb-4 inline-block shadow-lg break-words ' : '';
+    return type === 'classes' && element === 'page' ? 'first:mt-4 mx-4 mb-4 inline-block break-words ' : '';
 };
 
 export const getFromTheme = (element, type, theme) => {

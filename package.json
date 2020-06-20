@@ -23,6 +23,7 @@
     "marked": "^1.1.0",
     "micro-dash": "^7.3.0",
     "prismjs": "^1.20.0",
+    "sal.js": "^0.7.6",
     "svelte": "^3.23.2",
     "svelte-class-transition": "^1.0.3",
     "svelte-spa-chunk": "^2.0.0",
@@ -54,7 +55,7 @@
     "sharp": "^0.25.2"
   },
   "scripts": {
-    "build": "gulp prod && vite build",
+    "build": "gulp prod && vite build && gulp updateServiceWorker",
     "dev": "gulp && vite",
     "prod": "yarn build && yarn start",
     "start": "sirv dist --host 0.0.0.0 --port 3000"

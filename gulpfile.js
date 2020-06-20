@@ -10,27 +10,42 @@ const inject = require('gulp-inject');
 const packageJson = require('./package.json');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
-// const replace = require('gulp-string-replace');
+const replace = require('gulp-string-replace');
 const tailwindcss = require('tailwindcss');
 const webp = require('gulp-webp');
 
-// const updateServiceWorker = () => {
-//     const filesToPreCache = [
-//         '/',
-//         '/index.html',
-//         '/tailwind.css',
-//         '/tailwind-full.css',
-//         ...fs.readdirSync('public/build')
-//             .filter(e => ! e.endsWith('.map'))
-//             .map(e => '/build/' + e),
-//     ];
+const updateServiceWorker = () => {
+    const root = 'dist';
 
-//     return gulp.src('public/service-worker.js')
-//         .pipe(replace(/'cache-.*'/, `'cache-${packageJson.name}-${(+new Date).toString(36)}'`))
-//         .pipe(replace(/filesToPreCache = \[(.*\n)*\]/, `filesToPreCache = [\n    '${filesToPreCache.join('\',\n    \'')}'\n]`))
-//         .pipe(gulp.dest('public'));
-// };
-// exports.updateServiceWorker = updateServiceWorker;
+    const skip = [
+        'favicons',
+    ];
+
+    const flatDeep = arr => arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val) : val), []);
+
+    const tree = (root) => fs.readdirSync(root, { withFileTypes: true })
+        .filter(element => ! skip.includes(element.name) && ! element.name.endsWith('.map'))
+        .map(element => element.isDirectory()
+            ? tree(`${root}/${element.name}`)
+            : `${root}/${element.name}`);
+
+    const listAllFiles = flatDeep(fs.readdirSync(root, { withFileTypes: true })
+        .filter(dir => dir.isDirectory() && ! skip.includes(dir.name))
+        .map(dir => tree(`${root}/${dir.name}`)))
+        .map(path => path.substring(root.length));
+
+    const filesToPreCache = [
+        '/',
+        '/index.html',
+        ...listAllFiles,
+    ];
+
+    return gulp.src(`${root}/service-worker.js`)
+        .pipe(replace(/'cache-.*'/, `'cache-${packageJson.name}-${(+new Date).toString(36)}'`))
+        .pipe(replace(/filesToPreCache = \[(.*\n)*\]/, `filesToPreCache = [\n    '${filesToPreCache.join('\',\n    \'')}'\n]`))
+        .pipe(gulp.dest(root));
+};
+exports.updateServiceWorker = updateServiceWorker;
 
 const generateFavicons = () => {
     faviconsConfig.appName = packageJson.name;
@@ -108,7 +123,6 @@ const prod = gulp.series(
     generateFavicons,
     injectFavicons,
     optimizeImages,
-    // updateServiceWorker,
 );
 exports.prod = prod;
 

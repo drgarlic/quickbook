@@ -80,19 +80,14 @@
             z-20
             mt-2
             w-56
-            rounded-md
+            rounded-lg
             shadow-lg
+            bg-white
+            px-2
+            py-1
             {position}
         ">
-            <div class="
-                rounded-md
-                bg-white
-                shadow-xs
-                px-2
-                py-1
-            ">
-                <slot name="content"></slot>
-            </div>
+            <slot name="content"></slot>
         </div>
     </Transition>
 </div>

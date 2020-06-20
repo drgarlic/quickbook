@@ -23,9 +23,14 @@ module.exports = {
             //         '900': '#2d2d2d',
             //     }
             // },
+            borderRadius: {
+                xl: '1rem',
+                '2xl': '2rem',
+                '3xl': '4rem',
+            },
             fontFamily: {
                 mono: [
-                    'Inconsolata var',
+                    'Fira Code var',
                     ...defaultTheme.fontFamily.mono,
                 ],
                 sans: [
@@ -75,11 +80,13 @@ module.exports = {
         },
     },
     variants: {
-        backgroundColor: [ 'responsive', 'hover', 'active', 'focus', 'even', 'odd' ],
+        backgroundColor: [ 'responsive', 'hover', 'active', 'focus', 'focus-not-active', 'even', 'odd' ],
+        borderColor: [ 'responsive', 'hover', 'focus', 'active' ],
         borderWidth: [ 'responsive', 'first', 'last', 'not-first', 'not-last' ],
-        boxShadow: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+        boxShadow: ['responsive', 'hover', 'focus', 'active' ],
         margin: [ 'responsive', 'first', 'last', 'not-first', 'not-last', 'page-parent', 'li-first' ],
-        opacity: [ 'responsive', 'hover', 'focus', 'group-hover' ],
+        opacity: [ 'responsive', 'hover', 'focus' ],
+        textColor: [ 'responsive', 'hover', 'focus', 'active', 'focus-not-active' ],
     },
     plugins: [
         tailwindUI({
@@ -104,6 +111,10 @@ module.exports = {
                     name: 'not-last',
                     rule: 'not(:last-child)',
                 },
+                {
+                    name: 'focus-not-active',
+                    rule: 'focus:not(:active)',
+                }
             ];
 
             variants.forEach((variant) => {

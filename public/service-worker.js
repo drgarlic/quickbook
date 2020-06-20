@@ -6,6 +6,7 @@ const regexesOnlineFirst = [
 
 const regexesOnlineOnly = [
     'localhost',
+    'aws',
 ];
 
 const regexesCacheFirst = [

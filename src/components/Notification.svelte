@@ -42,7 +42,6 @@
         ">
             <div class="
                 rounded-lg
-                shadow-xs
                 overflow-hidden
             ">
                 <div class="p-4">

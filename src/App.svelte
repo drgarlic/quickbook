@@ -5,6 +5,8 @@
     import BannerUpdate from './components/BannerUpdate.svelte';
     import Router from './Router.svelte';
 
+    ! window.location.hash && window.location.replace(`${window.location.origin}/#${window.location.pathname}`);
+
     // Remember to stop the record when navigating to a new page
     const instance = ackeeTracker.create({
         server: 'https://ackee.gawlik.io',
@@ -52,12 +54,12 @@
     }
 
     @font-face {
-        font-family: 'Inconsolata var';
+        font-family: 'Fira Code var';
         font-weight: 100 900;
         font-style: normal;
         font-named-instance: 'Regular';
         font-display: swap;
-        src: url("/fonts/Inconsolata.var.ttf") format("truetype");
+        src: url("/fonts/FiraCode.var.ttf") format("truetype");
     }
 </style>
 

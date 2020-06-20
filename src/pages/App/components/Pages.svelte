@@ -54,7 +54,6 @@
     flex-none
     block
     bg-gray-100
-    xl:shadow-inner
     xl:min-w-1/2
     xl:overflow-y-auto
 ">
