@@ -22,13 +22,9 @@ const regexesCacheOnly = [
 
 // /!\ Warning /!\
 // Variables auto updated by Gulp, do not change them !
-const cacheName = 'cache-quickbook-kbdvlgkq';
+const cacheName = 'cache-name-id';
 const filesToPreCache = [
-    '/',
-    '/index.html',
-    '/tailwind.css',
-    '/tailwind-full.css',
-    '/build/main.js'
+    'file'
 ];
 
 console.log(`[Service Worker] Origin: ${self.location.origin}`);

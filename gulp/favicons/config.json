@@ -5,7 +5,7 @@
     "theme_color": "#ffffff",
     "appleStatusBarStyle": "default",
 
-    "scope": "/",
+    "scope": "/#/app",
     "start_url": "/",
 
     "display": "standalone",
