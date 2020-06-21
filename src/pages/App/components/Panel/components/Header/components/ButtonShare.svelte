@@ -10,7 +10,7 @@
     let toggle = false;
 
     const generateShareLink = () => {
-        const url = `${window.location.origin}/#/${getCompressedData()}`;
+        const url = `${window.location.origin}/#/app/${getCompressedData()}`;
 
         try {
             navigator.clipboard.writeText(url);
