@@ -26,7 +26,7 @@
             href="https://github.com/gawlk/quickbook"
             blank
             tertiary
-            label="Github"
+            label="Go to github page"
             customPadding="p-2"
         >
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -37,11 +37,21 @@
             href="https://docs.google.com/forms/d/e/1FAIpQLSfK8Nyl5YqrFe-fpioeEX6Hq_GPasoV7yUmlsimAjzI4l8tRA/viewform"
             blank
             tertiary
-            label="Feedback"
+            label="Go to feedback page"
             customPadding="p-2"
         >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"/>
+            </svg>
+        </Button>
+        <Button
+            href="https://www.buymeacoffee.com/gawlk"
+            blank
+            tertiary
+            label="Go to donation page"
+            customPadding="p-2"
+        >
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-coffee"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line>
             </svg>
         </Button>
     </div>

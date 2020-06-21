@@ -10,6 +10,9 @@ import * as packageJson from '../package.json';
 const urls = [
     {
         url: '/',
+    },
+    {
+        url: '/#/app',
     }
 ];
 

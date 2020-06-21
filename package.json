@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@tailwindcss/ui": "^0.3.0",
-    "autoprefixer": "^9.8.0",
+    "autoprefixer": "^9.8.2",
     "cssnano": "^4.1.10",
     "del": "^5.1.0",
     "favicons": "^6.1.0",
@@ -48,7 +48,7 @@
     "sitemap": "^6.1.5",
     "tailwindcss": "^1.4.6",
     "vercel": "^19.1.1",
-    "vite": "^0.20.8",
+    "vite": "^1.0.0-beta.1",
     "vite-plugin-svelte": "^0.1.4"
   },
   "resolutions": {

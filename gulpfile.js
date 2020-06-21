@@ -71,7 +71,7 @@ const clean = () => {
 };
 exports.clean = clean;
 
-const tailwindFull = (name = 'tailwind', path) => {
+const tailwindFull = () => {
     return gulp.src('node_modules/tailwindcss/tailwind.css')
         .pipe(postcss([
             tailwindcss('./gulp/tailwind/tailwind-full.config.js'),

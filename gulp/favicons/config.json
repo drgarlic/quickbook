@@ -6,7 +6,7 @@
     "appleStatusBarStyle": "default",
 
     "scope": "/#/app",
-    "start_url": "/",
+    "start_url": "/#/app",
 
     "display": "standalone",
     "orientation": "portrait",
