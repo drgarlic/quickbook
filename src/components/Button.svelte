@@ -82,7 +82,6 @@
         flex
         items-center
         justify-center
-        border-transparent
         font-medium
         select-none
         transition
@@ -90,13 +89,13 @@
         duration-150
         ease-in-out
         focus:outline-none
-        ${sizeClasses}
         ${colorClasses}
+        ${sizeClasses}
         ${disabled
             ? disabledClasses
             : (active
                 ? activeClasses.replace(/active:/gi, '')
-                : `${hoverClasses} ${focusClasses} ${activeClasses}`
+                : `border-transparent ${hoverClasses} ${focusClasses} ${activeClasses}`
             )
         }
         ${_class}

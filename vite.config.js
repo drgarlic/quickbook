@@ -18,9 +18,10 @@ let config = {
             'marked/src/helpers',
             'prismjs/components/prism-core',
             'prismjs/plugins/autoloader/prism-autoloader',
-            'svelte/internal',
-            'svelte/store',
-            'svelte-spa-chunk/src/index'
+            'svelte-spa-chunk/src/index',
+        ],
+        exclude: [
+            // 'svelte-spa-chunk',
         ]
     },
 };
