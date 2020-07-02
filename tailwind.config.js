@@ -45,7 +45,11 @@ module.exports = {
             fontSize: {
                 'sm-em': '.875em',
                 '14px': '14px',
-                '16px': '16px'
+                '16px': '16px',
+                '7xl': '5rem',
+                '8xl': '6rem',
+                '9xl': '7rem',
+                '10xl': '8rem',
             },
             inset: {
                 '20': '5rem',
@@ -80,12 +84,13 @@ module.exports = {
         },
     },
     variants: {
-        backgroundColor: [ 'responsive', 'hover', 'active', 'focus', 'focus-not-active', 'even', 'odd' ],
+        backgroundColor: [ 'responsive', 'hover', 'active', 'focus', 'focus-not-active', 'group-hover', 'group-focus', 'even', 'odd' ],
         borderColor: [ 'responsive', 'hover', 'focus', 'active' ],
         borderWidth: [ 'responsive', 'first', 'last', 'not-first', 'not-last' ],
-        boxShadow: ['responsive', 'hover', 'focus', 'active' ],
+        boxShadow: ['responsive', 'hover', 'focus', 'active', 'group-hover', 'group-focus' ],
         margin: [ 'responsive', 'first', 'last', 'not-first', 'not-last', 'page-parent', 'li-first' ],
-        opacity: [ 'responsive', 'hover', 'focus' ],
+        opacity: [ 'responsive', 'hover', 'focus', 'group-hover', 'group-focus' ],
+        scale: [ 'responsive', 'hover', 'focus', 'active' ],
         textColor: [ 'responsive', 'hover', 'focus', 'active', 'focus-not-active' ],
     },
     plugins: [

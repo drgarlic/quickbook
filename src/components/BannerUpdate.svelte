@@ -30,7 +30,7 @@
     <div slot="button">
         <Button
             on:click={() => { location.reload() }}
-            secondary
+            white
             label="Reloads the page"
         >
             Refresh

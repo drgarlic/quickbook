@@ -28,25 +28,20 @@
         fixed
         inset-0
         z-10
+        bg-white
+        flex
+        flex-col
+        transition
+        duration-300
+        ease-in-out
         xl:relative
         xl:flex-1
     ">
-        <div
-            class="
-            h-full
-            bg-white
-            py-4
-            px-2
-            flex
-            flex-col
-            sm:px-8
-        ">
-            <Header />
-            <Editor {text} />
-            <Footer />
-            <ModalTheme
-                toggle={$modal === 'theme'}
-            />
-        </div>
+        <Header />
+        <Editor {text} />
+        <Footer />
+        <ModalTheme
+            toggle={$modal === 'theme'}
+        />
     </div>
 </Transition>

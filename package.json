@@ -17,15 +17,15 @@
     "ackee-tracker": "^3.3.0",
     "compressorjs": "^1.0.6",
     "diff": "^4.0.2",
-    "dompurify": "^2.0.11",
+    "dompurify": "^2.0.12",
     "emoji-name-map": "^1.2.8",
     "katex": "^0.11.1",
     "marked": "^1.1.0",
-    "micro-dash": "^7.3.0",
+    "micro-dash": "^8.0.0",
     "prismjs": "^1.20.0",
     "sal.js": "^0.7.6",
     "svelte": "^3.23.2",
-    "svelte-class-transition": "^1.0.3",
+    "svelte-class-transition": "^1.0.4",
     "svelte-spa-chunk": "^2.0.0",
     "svelte-spa-router": "^2.2.0",
     "tslib": "^2.0.0",
@@ -33,9 +33,9 @@
   },
   "devDependencies": {
     "@tailwindcss/ui": "^0.3.0",
-    "autoprefixer": "^9.8.2",
+    "autoprefixer": "^9.8.3",
     "cssnano": "^4.1.10",
-    "cypress": "^4.8.0",
+    "cypress": "^4.9.0",
     "del": "^5.1.0",
     "favicons": "^6.1.0",
     "gulp": "^4.0.2",
@@ -45,13 +45,13 @@
     "gulp-rename": "^2.0.0",
     "gulp-string-replace": "^1.1.2",
     "gulp-webp": "^4.0.1",
-    "sirv-cli": "^1.0.1",
+    "sirv-cli": "^1.0.2",
     "sitemap": "^6.1.6",
-    "svelte-hmr": "^0.9.0-1",
+    "svelte-hmr": "^0.9.0",
     "tailwindcss": "^1.4.6",
     "vercel": "^19.1.1",
-    "vite": "1.0.0-beta.2",
-    "vite-plugin-svelte": "^1.1.0"
+    "vite": "1.0.0-beta.8",
+    "vite-plugin-svelte": "^1.2.1"
   },
   "resolutions": {
     "sharp": "^0.25.2"
@@ -60,6 +60,6 @@
     "build": "gulp prod && vite build && gulp updateServiceWorker",
     "dev": "gulp && vite",
     "prod": "yarn build && yarn start",
-    "start": "sirv dist --host 0.0.0.0 --port 3000"
+    "start": "sirv dist --host --port 3000"
   }
 }

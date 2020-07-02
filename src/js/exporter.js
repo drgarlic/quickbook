@@ -3,11 +3,11 @@ import { get } from 'svelte/store';
 import {
     compressToArray,
     compressToString,
-} from '/src/js/compressors';
-import { getText } from '/src/js/editor';
-import { getUsedImages } from '/src/js/images';
-import { pages } from '/src/js/store';
-import { getCurrentTheme } from '/src/js/themes';
+} from './compressors';
+import { getText } from './editor';
+import { getUsedImages } from './images';
+import { pages } from './store';
+import { getCurrentTheme } from './themes';
 
 const getData = () => {
     return {

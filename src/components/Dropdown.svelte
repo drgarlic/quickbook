@@ -9,21 +9,26 @@
 
     let button;
     let dropdown;
+    let positionClasses;
+    let width;
 
     const dispatch = createEventDispatcher();
 
-    let position = '-right-22 origin-center';
+    $: if (width && button) {
+        const bb = button.getBoundingClientRect();
 
-    // $: {
-    //     if (button) {
-    //         const bb = button.getBoundingClientRect();
-    //         const center = (bb.left + bb.right) / 2;
+        // w-56 = 24 rem = 224px (if base is 16px) / 2 = 112
+        const left = bb.left - 112;
+        const right = bb.right + 112;
 
-    //         if (bb.left = )
-    //         position = 'origin-top-right right-0';
-    //         position = '-right-22 origin-center';
-    //     }
-    // }
+        if (left >= 0 && right > width - 1) {
+            positionClasses = 'origin-top-right right-0';
+        } else if (left < 0 && right < width) {
+            positionClasses = 'origin-top-left left-0';
+        } else {
+            positionClasses = 'origin-center -right-22';
+        }
+    }
 
     const onClickOutside = (event) => {
         if (toggle) {
@@ -45,7 +50,7 @@
     }
 </script>
 
-<svelte:body on:click={onClickOutside} />
+<svelte:window bind:innerWidth={width} on:click={onClickOutside} />
 
 <div class="
     relative
@@ -57,11 +62,13 @@
             on:click={() => { dispatch('update', { value: ! toggle }); }}
             active={toggle}
             tertiary
+            hasIcon
             {label}
             customPadding="p-2"
         >
-            <slot name="button">
-            </slot>
+            <svg slot="icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <slot name="button" />
+            </svg>
         </Button>
     </div>
 
@@ -85,7 +92,7 @@
             bg-white
             px-2
             py-1
-            {position}
+            {positionClasses}
         ">
             <slot name="content"></slot>
         </div>

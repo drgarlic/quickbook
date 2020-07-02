@@ -21,7 +21,7 @@ export const importData = (data) => {
         data = typeof data === 'string' ? decompressFromString(data) : decompressFromArray(data);
 
         if (data) {
-            console.log(data);
+            // console.log(data);
 
             const json = JSON.parse(data);
 
@@ -42,7 +42,7 @@ export const importData = (data) => {
                         }
                     }
                 }
-                console.log(theme);
+                // console.log(theme);
 
                 theme ? changeTheme(theme) : createTheme('imported', json.theme);
             }

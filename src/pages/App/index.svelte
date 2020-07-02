@@ -9,6 +9,16 @@
 
     export let params = {};
 
+    let imported = false;
+
+    $: if (! imported) {
+        document.getElementsByTagName('head')[0].insertAdjacentHTML(
+            'beforeend',
+            '<link rel="stylesheet" type="text/css" href="/css/tailwind-full.css">'
+        );
+        imported = true;
+    }
+
     initializeThemes();
 
     const text = importData(params.data);

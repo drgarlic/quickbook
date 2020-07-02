@@ -84,11 +84,11 @@ const tailwindFull = () => {
 exports.tailwindFull = tailwindFull;
 
 const generateWebps = () => {
-    return gulp.src('public/assets/**/*')
+    return gulp.src('public/**/*')
         .pipe(webp({
             quality: 90,
         }))
-        .pipe(gulp.dest('public/assets'));
+        .pipe(gulp.dest('public'));
 };
 exports.generateWebps = generateWebps;
 
@@ -104,6 +104,13 @@ const injectFavicons = () => {
 };
 exports.injectFavicons = injectFavicons;
 
+const cleanFaviconsHTML = () => {
+    return del([
+        'public/favicons/*.html',
+    ]);
+};
+exports.cleanFaviconsHTML = cleanFaviconsHTML;
+
 const optimizeImages = () => {
     return gulp.src('public/**/*.+(jpeg|jpg|png|gif)')
         .pipe(imagemin())
@@ -118,11 +125,12 @@ const dev = gulp.series(
 exports.dev = dev;
 
 const prod = gulp.series(
-    tailwindFull,
-    generateWebps,
+    clean,
     generateFavicons,
     injectFavicons,
+    cleanFaviconsHTML,
     optimizeImages,
+    generateWebps,
 );
 exports.prod = prod;
 

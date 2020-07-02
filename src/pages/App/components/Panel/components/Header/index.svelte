@@ -7,7 +7,18 @@
     import DropdownThemes from './components/DropdownThemes.svelte';
 </script>
 
-<div class="
+<div
+    on:mouseenter={() => { document.getElementById('panel').classList.add('group', 'hover:bg-white') }}
+    on:mouseleave={() => { document.getElementById('panel').classList.remove('group', 'hover:bg-white') }}
+    class="
+    py-4
+    px-2
+    sm:px-8
+    opacity-0
+    group-hover:opacity-100
+    transition
+    duration-300
+    ease-in-out
     flex
     space-x-2
 ">

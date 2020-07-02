@@ -12,32 +12,43 @@
 </script>
 
 <div class="
-    mt-4
-    bg-gray-50
     flex-1
-    p-4
-    rounded-lg
     w-full
-    sm:p-6
+    px-2
+    sm:px-8
 ">
     <div class="
+        p-4
         h-full
         w-full
-        transition-opacity
-        ease-out
-        {$informations.pageCounter === 0 ? 'opacity-0' : 'opacity-100 duration-1000'}
+        transition
+        duration-300
+        ease-in-out
+        group-hover:bg-gray-50
+        rounded-xl
+        group-hover:shadow-inner
+        sm:p-6
     ">
-        <div
-            id="editor"
-            class="
+        <div class="
             h-full
             w-full
-            font-mono
-            text-gray-700
-            subpixel-antialiased
-            leading-relaxed
-            text-base
-            xl:text-sm
-        "/>
+            transition-opacity
+            ease-out
+            {$informations.pageCounter === 0 ? 'opacity-0' : 'opacity-100 duration-1000'}
+        ">
+            <div
+                id="editor"
+                class="
+                h-full
+                w-full
+                font-mono
+                text-gray-700
+                subpixel-antialiased
+                leading-relaxed
+                text-base
+                xl:font-medium
+                xl:text-sm
+            "/>
+        </div>
     </div>
 </div>

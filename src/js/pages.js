@@ -33,7 +33,9 @@ export const generatePages = async () => {
 
     const text = get(editor).getValue();
 
-    let stringHTML = markdownToHTML(text.trim());
+    let stringHTML = markdownToHTML(text);
+
+    // console.log(stringHTML);
 
     const diffs = diff.diffLines(get(stringHTMLold), stringHTML);
 
@@ -132,16 +134,7 @@ export const generatePages = async () => {
         // Add colors to code blocks
         elementsChanged.forEach(element => element.querySelectorAll('code').forEach((block) => {
             prismCore.highlightElement(block, false);
-            // let language = block.classList.value.split(' ').filter(x => x.startsWith('language-'));
-            // if (language.length > 0) {
-            //     language = language[0].split('-')[1];
-            //     if (Prism.languages[language]) {
-            //         block.innerHTML = Prism.highlight(block.innerHTML, Prism.languages[language], language);
-            //     }
-            // }
         }));
-
-        // console.log('hey');
 
         // Spread elements
         console.time('spread');
@@ -157,7 +150,14 @@ export const generatePages = async () => {
 };
 
 const markdownToHTML = (text) => {
-    text = text.replace(/<pbr>/g, '\n<pbr></pbr>\n');
+    text = text.replace(/<pbr>/g, '\n\n<pbr></pbr>\n\n');
+
+    // const regexLists = /\n(-|\*|\+|([0-9]+.)) /g;
+    // let matches = [ ...new Set(text.match(regexLists)) ];
+    // matches.forEach((match) => {
+    //     text = text.replace(new RegExp(match.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), `\n\n${match}`);
+    // });
+
     marked.use({ renderer });
     return marked(text);
 };
@@ -194,7 +194,6 @@ const replaceLatex = (text) => {
 
     latexStrings = text.match(/\\\$[^\\\$]*\\\$/g);
     // console.log(latexStrings);
-
     latexStrings && latexStrings.forEach(latexString => handleLatex(latexString, false));
 
     return text;
@@ -208,8 +207,7 @@ const replaceImages = (stringHTML, text) => {
     return stringHTML;
 };
 
-// What to do if # <h1>
-// Too slow, maybe do a WASM version ?
+// Too slow
 const splitToElements = (stringHTML, reverse = false) => {
     console.time('splitToElements');
 
@@ -334,7 +332,7 @@ const spread = (element, counterNoChange = 0) => {
 
     if (isCustom(element)) {
         element.nextSibling && spread(element.nextSibling, counterNoChange);
-    } else if (hasNoChild(element) && element.parentNode.firstElementChild !== element) {
+    } else if (hasNoChild(element) && element.parentNode.childElementCount !== 1) {
         let nextSibling = element.nextSibling;
         element.parentNode.removeChild(element);
         nextSibling && spread(nextSibling, counterNoChange);

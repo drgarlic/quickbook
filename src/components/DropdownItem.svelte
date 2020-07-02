@@ -28,8 +28,7 @@
         <div class="
             flex-none
             mr-3
-            text-gray-400
-            group-hover:text-gray-500
+            opacity-50
         ">
             <slot name="icon"></slot>
         </div>
@@ -48,9 +47,10 @@
             class="
             flex-none
             p-2
-            text-gray-400
-            hover:text-gray-500
-            focus:text-gray-500
+            text-gray-600
+            opacity-50
+            hover:text-gray-900
+            focus:text-gray-900
             focus:outline-none
         ">
             <slot name="icon2"></slot>

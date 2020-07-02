@@ -10,21 +10,10 @@
         createTheme,
     } from '/src/js/themes';
 
-    import Button from '/src/components/Button.svelte';
     import Dropdown from '/src/components/Dropdown.svelte';
     import DropdownItem from '/src/components/DropdownItem.svelte';
 
     let toggle = false;
-
-    let imported = false;
-
-    $: if (toggle && ! imported) {
-        document.getElementsByTagName('head')[0].insertAdjacentHTML(
-            'beforeend',
-            '<link rel="stylesheet" type="text/css" href="/css/tailwind-full.css">'
-        );
-        imported = true;
-    }
 
     const handleTheme = (name) => {
         changeTheme(name);
@@ -43,11 +32,8 @@
     label="Themes"
     on:update={(event) => { toggle = event.detail.value }}
 >
-    <div slot="button">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"/>
-        </svg>
-    </div>
+    <path slot="button" fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"/>
+
     <div slot="content">
         {#each Object.entries($themes) as [name, data]}
             <DropdownItem

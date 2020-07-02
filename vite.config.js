@@ -21,8 +21,11 @@ let config = {
             'svelte-spa-chunk/src/index',
         ],
         exclude: [
-            // 'svelte-spa-chunk',
-        ]
+            'svelte-spa-chunk',
+        ],
+        rollupDedupe: [
+            'svelte'
+        ],
     },
 };
 

@@ -120,13 +120,15 @@ export const renderer = {
 
     link(href, title, text) {
         href = helpers.cleanUrl(this.options.sanitize, this.options.baseUrl, href);
+
         if (href === null) {
             return text;
         }
+
         return `<a`
             + ` style="${getStyles('link')}"`
             + ` class="marked ${getClasses('link')}"`
-            + ` href="${escape(href)}"`
+            + ` href="${href}"`
             + ` title="${title || href}"`
         + `>`
             + text
@@ -136,6 +138,8 @@ export const renderer = {
     list(body, ordered, start) {
         const type = ordered ? 'ol' : 'ul';
         const startatt = (ordered && start !== 1) ? ` start="${start}"` : ``;
+
+        // console.log(body);
 
         return `<${type}`
             + startatt
